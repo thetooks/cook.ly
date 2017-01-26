@@ -11,7 +11,7 @@
 -- ---
 
 DROP TABLE IF EXISTS `Users`;
-		
+    
 CREATE TABLE `Users` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `FirstName` VARCHAR NOT NULL DEFAULT 'NULL',
@@ -28,9 +28,10 @@ CREATE TABLE `Users` (
 -- ---
 
 DROP TABLE IF EXISTS `Locations`;
-		
+    
 CREATE TABLE `Locations` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `Location` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -40,7 +41,7 @@ CREATE TABLE `Locations` (
 -- ---
 
 DROP TABLE IF EXISTS `UserPreferences`;
-		
+    
 CREATE TABLE `UserPreferences` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `Preference` INTEGER NULL DEFAULT NULL,
@@ -53,7 +54,7 @@ CREATE TABLE `UserPreferences` (
 -- ---
 
 DROP TABLE IF EXISTS `UserBookings`;
-		
+    
 CREATE TABLE `UserBookings` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `EventId` INTEGER NULL DEFAULT NULL,
@@ -66,7 +67,7 @@ CREATE TABLE `UserBookings` (
 -- ---
 
 DROP TABLE IF EXISTS `Hosts`;
-		
+    
 CREATE TABLE `Hosts` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `FirstName` INTEGER NULL DEFAULT NULL,
@@ -83,7 +84,7 @@ CREATE TABLE `Hosts` (
 -- ---
 
 DROP TABLE IF EXISTS `Events `;
-		
+    
 CREATE TABLE `Events ` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `TimeStamp` VARCHAR NULL DEFAULT NULL,
@@ -100,7 +101,7 @@ CREATE TABLE `Events ` (
 -- ---
 
 DROP TABLE IF EXISTS `Users_Hosts`;
-		
+    
 CREATE TABLE `Users_Hosts` (
   `UserId` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `Host_Id` INTEGER NULL DEFAULT NULL,
@@ -113,7 +114,7 @@ CREATE TABLE `Users_Hosts` (
 -- ---
 
 DROP TABLE IF EXISTS `HostReviews`;
-		
+    
 CREATE TABLE `HostReviews` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `Review` VARCHAR NULL DEFAULT NULL,
@@ -128,7 +129,7 @@ CREATE TABLE `HostReviews` (
 -- ---
 
 DROP TABLE IF EXISTS `Host_Specialties`;
-		
+    
 CREATE TABLE `Host_Specialties` (
   `HostId` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `SpecialtyId` INTEGER NULL DEFAULT NULL,
@@ -141,7 +142,7 @@ CREATE TABLE `Host_Specialties` (
 -- ---
 
 DROP TABLE IF EXISTS `Specialties`;
-		
+    
 CREATE TABLE `Specialties` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `Specialty` INTEGER NULL DEFAULT NULL,
@@ -154,7 +155,7 @@ CREATE TABLE `Specialties` (
 -- ---
 
 DROP TABLE IF EXISTS `Menus`;
-		
+    
 CREATE TABLE `Menus` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `Dinner Item` VARCHAR NULL DEFAULT NULL,
@@ -205,8 +206,8 @@ ALTER TABLE `Host_Specialties` ADD FOREIGN KEY (SpecialtyId) REFERENCES `Special
 
 -- INSERT INTO `Users` (`id`,`FirstName`,`LastName`,`LocationsId`,`UserPreferenceId`,`BookingsId`) VALUES
 -- ('','','','','','');
--- INSERT INTO `Locations` (`id`) VALUES
--- ('');
+-- INSERT INTO `Locations` (`id`,`Location`) VALUES
+-- ('','');
 -- INSERT INTO `UserPreferences` (`id`,`Preference`) VALUES
 -- ('','');
 -- INSERT INTO `UserBookings` (`id`,`EventId`) VALUES
