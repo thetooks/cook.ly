@@ -1,3 +1,5 @@
+import React from 'react';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -7,6 +9,12 @@ class App extends React.Component {
   }
 
   render() {
-    <h1>Welcome to Cook.ly</h1>
+    return (
+      <div>
+        <h1>Welcome to Cook.ly</h1>
+      </div>
+    )
   }
-}
+};
+
+module.exports = App;
