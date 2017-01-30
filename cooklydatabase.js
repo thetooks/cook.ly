@@ -1,0 +1,105 @@
+var Sequelize = require('sequelize')
+var connection = new Sequelize('cookly', 'root', 'NaijaBoy1785');
+
+var User = connection.define ('Users', {
+  'FirstName': Sequelize.STRING,
+  'LastName': Sequelize.STRING,
+  'Address': Sequelize.STRING
+});
+
+var Location = connection.define('Locations', {
+  'City': Sequelize.STRING,
+  'State': Sequelize.STRING
+});
+
+
+var UserPreference = connection.define('Users', {
+  'preference': Sequelize.STRING,
+});
+
+
+var Host = connection.define('Hosts', {
+  'FirstName': Sequelize.STRING,
+  'LastName': Sequelize.STRING,
+  'Address': Sequelize.STRING
+})
+
+
+var Review = connection.define('Reviews', {
+  'Review': Sequelize.STRING,
+  'Rating': Sequelize.STRING,
+});
+
+
+
+var Menu = connection.define('Menus', {
+  'DinnerItem': Sequelize.STRING,
+  'LunchItem': Sequelize.STRING,
+  'BreakfastItem': Sequelize.STRING,
+  'Drink Item': Sequelize.STRING
+})
+
+
+var Event = connection.define('Events', {
+  'TimeStamp': Sequelize.DATE,
+  'Cuisine': Sequelize.STRING,
+  'MaxsSeats': Sequelize.STRING,
+  'Location': Sequelize.STRING
+});
+
+
+var UserBooking = connection.define ('UserBookings', {
+  'Price': Sequelize.STRING,
+  'TimeofPurchase': Sequelize.DATE
+});
+
+var Specialty = connection.define('Specialties', {
+  'Speciality': Sequelize.STRING
+});
+
+
+User.belongsToMany(Host, {through: 'Users_Hosts'});
+Host.belongsToMany(User, {through: 'Users_Hosts'});
+Host.belongsToMany(Specialty, {through: 'Hosts_Specialties'});
+Specialty.belongsToMany(Host, {through: 'Hosts_Specialties'});
+
+
+
+User.hasMany(Review, {as: 'Reviews'})
+Location.hasMany(User, {as: 'Locations'});
+Location.hasMany(Host, {as: 'Locations'});
+UserPreference.hasMany(User, {as: 'Preferences'});
+User.hasMany(Review, {as: 'Users'});
+Host.hasMany(Review, {as: 'Reviews'});
+Event.hasMany(UserBooking, {as: 'Events'});
+
+Menu.belongsTo(Event);
+
+module.exports.User = User;
+module.exports.Location = Location;
+module.exports.UserPreference = UserPreference;
+module.exports.Host = Host;
+module.exports.Review = Review;
+module.exports.Menu = Menu;
+module.exports.Event = Event;
+module.exports.UserBooking = UserBooking;
+module.exports.Specialty = Specialty;
+
+
+ 
+// //  /*
+// users has many hosts
+// hosts has users
+
+// users has many events
+// hosts has many events
+// events belongs to hosts
+// menus has one event
+
+// hosts has many specialties
+// specialties has many hosts
+
+// hosts has many reviews
+// reviews belongs to hosts
+// */ 
+connection.sync();
