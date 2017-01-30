@@ -15,7 +15,8 @@ class App extends React.Component {
     return (
       <div >
         <Navbar />
-        <Carousel />
+        
+        {this.props.children}
       </div>
     );
   }

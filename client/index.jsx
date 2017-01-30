@@ -1,16 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
-import App from './components/App.jsx';
-
+import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router';
+import App from './components/Home/app.jsx';
+import Host from './components/Host/host.jsx';
+import Carousel from './components/Home/carousel.jsx';
+import Signup from './components/Auth/signup.jsx';
+import Login from './components/Auth/login.jsx';
 // ReactDOM.render(
 //   <App/>,
 //   document.getElementById('app')
 // );
 
 ReactDOM.render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={Carousel} />
+      <Route path="host" component={Host} />
+      <Route path="login" component={Login} />
+      <Route path="signup" component={Signup} />
+      
     </Route>
   </Router>
 ), document.getElementById('app'));
