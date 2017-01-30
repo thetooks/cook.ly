@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 
 import MenuItem from 'react-bootstrap/lib/MenuItem';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import Link from 'react-router/lib/Link';
 
 class Navigationbar extends React.Component {
   
@@ -13,16 +15,16 @@ class Navigationbar extends React.Component {
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#/test">Cook.ly</a>
+            <Link to="/">Cook.ly</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
       
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Become a Host</NavItem>
-            <NavItem eventKey={2} href="#">Sign Up</NavItem>
-            <NavItem eventKey={3} href="#">Log In </NavItem>
+            <LinkContainer to="/host"><NavItem eventKey={1} >BECOME A HOST</NavItem></LinkContainer>
+            <LinkContainer to="/signup"><NavItem eventKey={2} >SIGN UP</NavItem></LinkContainer>
+            <LinkContainer to="/login"><NavItem eventKey={3} >SIGN IN </NavItem></LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
