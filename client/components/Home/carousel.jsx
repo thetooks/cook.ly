@@ -14,7 +14,7 @@ class carouselInstance extends React.Component {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img width={900} height={500} alt="900x500" src="./assets/diningTable.jpeg"/>
+          <img width={900} height={500} alt="900x500" src="./assets/diningTable1.jpeg"/>
           <Carousel.Caption>
             <h3>Second slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
