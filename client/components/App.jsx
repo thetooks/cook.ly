@@ -8,20 +8,17 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-    }
+    };
   }
 
   render() {
     return (
       <div >
-        
         <Navbar />
         <Carousel />
-        <h1>Welcome to Cook.ly</h1>
-
       </div>
-    )
+    );
   }
-};
+}
 
 module.exports = App;
