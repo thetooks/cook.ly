@@ -1,9 +1,5 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
-
-import MenuItem from 'react-bootstrap/lib/MenuItem';
+import {Navbar, Nav, NavItem, MenuItem} from 'react-bootstrap';
 import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
 import Link from 'react-router/lib/Link';
 

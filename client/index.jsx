@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router';
-import App from './components/app.jsx';
-import Host from './components/host.jsx';
-import Carousel from './components/carousel.jsx';
-import Signup from './components/signup.jsx';
-import Login from './components/login.jsx';
+import App from './components/Home/app.jsx';
+import Host from './components/Host/host.jsx';
+import Carousel from './components/Home/carousel.jsx';
+import Signup from './components/Auth/signup.jsx';
+import Login from './components/Auth/login.jsx';
 // ReactDOM.render(
 //   <App/>,
 //   document.getElementById('app')
