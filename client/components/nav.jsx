@@ -10,25 +10,25 @@ class Navigationbar extends React.Component {
 
   render() {
     return (
-      <Navbar  collapseOnSelect>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="#/test">Cook.ly</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
+      <Navbar collapseOnSelect>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href="#/test">Cook.ly</a>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
       
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#">Become a Host</NavItem>
-        <NavItem eventKey={2} href="#">Sign Up</NavItem>
-        <NavItem eventKey={3} href="#">Log In </NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-    )
+          <Nav pullRight>
+            <NavItem eventKey={1} href="#">Become a Host</NavItem>
+            <NavItem eventKey={2} href="#">Sign Up</NavItem>
+            <NavItem eventKey={3} href="#">Log In </NavItem>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    );
   }
-};
+}
 
 
 module.exports = Navigationbar;
