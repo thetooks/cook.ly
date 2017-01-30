@@ -2,12 +2,12 @@ import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
 import Thumbnail from './thumbnail.jsx';
 
-class Host extends React.Component {
+class User extends React.Component {
   
   render() {
     return (
       <div >
-        <h1 className="spacerL90">HOST DASHBOARD</h1>
+        <h1 className="spacerL90">USER DASHBOARD</h1>
         
         <Grid>
           <Row>  
@@ -15,10 +15,7 @@ class Host extends React.Component {
               <ButtonToolbar>
                 <ButtonGroup>
                   <Button bsStyle="primary">Edit Profile</Button>
-                  <Button >Schedule Event</Button>
-                  <Button >View Calendar</Button>
-                  <Button >Create Menu</Button>
-                  <Button >View Menus</Button>
+                  <Button >View Bookings</Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </Col>
@@ -35,5 +32,5 @@ class Host extends React.Component {
   }
 }
 
-module.exports = Host;
+module.exports = User;
 
