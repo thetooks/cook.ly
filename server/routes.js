@@ -19,16 +19,30 @@ router.get('/', function(req, res) {
 });
 
 router.get('/getAllEvents', function(req, res){
-  Host.build({
-      FirstName: 'John',
-      LastName: 'Smith',
-      Address: 'cake street',
+  Event.build({
+      Cuisine: 'Rainbow Cake',
+      MaxsSeats: 20,
+      Address: 'Cake Street, Rainbow Unicorn Island'
     }).save().then(function() {
-      res.send('added to database');
+      res.send('Event added!');
     });
 
   // query the data
   // push the data into events as they come in
+});
+
+router.get('/getUserEvents', function(req, res) {
+  // USER TABLE IS CURRENTLY BROKEN
+  // PULL STRAIGHT FROM EVENTS TABLE REGARDLESS OF USER INVOLVEMENT OF THE EVENT
+
+  Event.findAll({
+    where: {
+      Cuisine: 'Rainbow Cake'
+    }
+  }).then(function(data) {
+    res.send(JSON.stringify(data));
+  });
+
 });
 
 module.exports = router;
