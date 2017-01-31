@@ -17,7 +17,7 @@ class UserBooking extends React.Component {
         var eventsArray = JSON.parse(data);
         console.log(eventsArray);
         context.setState({
-          events: eventsArray
+          events: JSON.parse(data)
         });
       },
       error: function(err, data) {
