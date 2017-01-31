@@ -1,9 +1,22 @@
 import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
 import Thumbnail from './thumbnail.jsx';
+import UserBookings from './userBookings.jsx'
 
 class User extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewBookings: false
+    };
+
+    this.handleViewBookings = this.handleViewBookings.bind(this);
+  }
+
+  handleViewBookings() {
+    this.setState({viewBookings: !this.state.viewBookings});
+  }
+
   render() {
     return (
       <div >
@@ -15,14 +28,17 @@ class User extends React.Component {
               <ButtonToolbar>
                 <ButtonGroup>
                   <Button bsStyle="primary">Edit Profile</Button>
-                  <Button >View Bookings</Button>
+                  <Button onClick={this.handleViewBookings}>View Bookings</Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </Col>
           </Row>
           <Row className="spacerT10">
-            <Col xs={4} md={4}>
+            <Col sm={4}>
               {Thumbnail} 
+            </Col>
+            <Col sm={4}>
+              {this.state.viewBookings && <UserBookings />}
             </Col>
           </Row>
           
