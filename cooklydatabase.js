@@ -13,7 +13,7 @@ var Location = connection.define('Locations', {
 });
 
 
-var Preference = connection.define('Users', {
+var Preference = connection.define('Preferences', {
   'preference': Sequelize.STRING,
 });
 
@@ -38,7 +38,7 @@ var Menu = connection.define('Menus', {
 var Event = connection.define('Events', {
   'TimeStamp': Sequelize.DATE,
   'Cuisine': Sequelize.STRING,
-  'MaxsSeats': Sequelize.INTEGER,
+  'MaxSeats': Sequelize.INTEGER,
   'Address': Sequelize.STRING,
 });
 
