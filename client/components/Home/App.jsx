@@ -18,7 +18,6 @@ class App extends React.Component {
     $.ajax({
       url: '/getallevents',
       method: 'GET',
-      dataType: 'json',
       success: function(data) {
         console.log(data);
       },

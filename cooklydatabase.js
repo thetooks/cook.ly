@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize')
-var connection = new Sequelize('cookly', 'root', 'NaijaBoy1785');
+var connection = new Sequelize('cookly', 'root', '');
 
 var User = connection.define ('Users', {
   'FirstName': Sequelize.STRING,

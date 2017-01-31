@@ -10,7 +10,7 @@ var Review = Models.Review;
 var Menu = Models.Menu;
 var Event = Models.Event;
 var UserBooking = Models.UserBooking;
-var Speciality = Models.Specialty;
+var Specialty = Models.Specialty;
 
 
 var express = require('express');
