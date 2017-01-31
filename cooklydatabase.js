@@ -13,7 +13,7 @@ var Location = connection.define('Locations', {
 });
 
 
-var UserPreference = connection.define('Users', {
+var Preference = connection.define('Users', {
   'preference': Sequelize.STRING,
 });
 
@@ -68,18 +68,19 @@ User.hasMany(Review, {as: 'Reviews'})
 Location.hasMany(User, {as: 'Locations'});
 Location.hasMany(Host, {as: 'Locations'});
 Location.hasMany(Event, {as: 'Locations'});
-UserPreference.hasMany(User, {as: 'Preferences'});
-User.hasMany(Review, {as: 'Users'});
+Preference.hasMany(User, {as: 'Preferences'});
+// User.hasMany(Review, {as: 'Users'});
 Host.hasMany(Review, {as: 'Reviews'});
 Event.hasMany(UserBooking, {as: 'Events'});
 
 //** Not sure if these are needed
 // Menu.belongsTo(Event); ** Not sure if these are needed
 // Location.belongsTo(Event);
+Event.belongsTo(Host, {as: 'Host'});
 
 module.exports.User = User;
 module.exports.Location = Location;
-module.exports.UserPreference = UserPreference;
+module.exports.Preference = Preference;
 module.exports.Host = Host;
 module.exports.Review = Review;
 module.exports.Menu = Menu;
