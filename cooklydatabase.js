@@ -43,10 +43,10 @@ var Menu = connection.define('Menus', {
 var Event = connection.define('Events', {
   'TimeStamp': Sequelize.DATE,
   'Cuisine': Sequelize.STRING,
-  'MaxsSeats': Sequelize.STRING,
-  'Location': Sequelize.STRING
+  'MaxsSeats': Sequelize.INTEGER,
+  'Address': Sequelize.STRING,
 });
-
+// needs a host column
 
 var UserBooking = connection.define ('UserBookings', {
   'Price': Sequelize.STRING,
@@ -64,16 +64,18 @@ Host.belongsToMany(Specialty, {through: 'Hosts_Specialties'});
 Specialty.belongsToMany(Host, {through: 'Hosts_Specialties'});
 
 
-
 User.hasMany(Review, {as: 'Reviews'})
 Location.hasMany(User, {as: 'Locations'});
 Location.hasMany(Host, {as: 'Locations'});
+Location.hasMany(Event, {as: 'Locations'});
 UserPreference.hasMany(User, {as: 'Preferences'});
 User.hasMany(Review, {as: 'Users'});
 Host.hasMany(Review, {as: 'Reviews'});
 Event.hasMany(UserBooking, {as: 'Events'});
 
-Menu.belongsTo(Event);
+//** Not sure if these are needed
+// Menu.belongsTo(Event); ** Not sure if these are needed
+// Location.belongsTo(Event);
 
 module.exports.User = User;
 module.exports.Location = Location;
