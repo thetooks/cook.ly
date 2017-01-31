@@ -1,4 +1,5 @@
 import React from 'react';
+import UserBooking from './userBooking.jsx'
 
 class UserBookings extends React.Component {
   constructor(props) {
@@ -10,7 +11,10 @@ class UserBookings extends React.Component {
 
   render() {
     return (
-      <div>USER BOOKINGS MODULE</div>
+      <div>
+        USER BOOKINGS:
+        <UserBooking />
+      </div>
     );
   }
 };
