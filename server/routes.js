@@ -20,6 +20,7 @@ router.get('/', function(req, res) {
 
 router.get('/getAllEvents', function(req, res){
   Event.build({
+      TimeStamp: '2017-01-01',
       Cuisine: 'Rainbow Cake',
       MaxsSeats: 20,
       Address: 'Cake Street, Rainbow Unicorn Island'
