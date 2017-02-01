@@ -28,19 +28,21 @@ class UserBooking extends React.Component {
   render() {
     return (
       <div>
-        {this.state.events.map(function(event) {
-          console.log(typeof event.TimeStamp);
+        {this.state.events.map(function(event, index) {
           return (
-            <ul>
-              <li>Date: {event.TimeStamp.slice(0,10)}</li>
-              <li>Host: </li>
-              <li>Address: {event.Address}</li>
-              <li>Theme: {event.Cuisine}</li>
-            </ul>
-          )
+            <div key={index}>
+              <ul>
+                <li>Date: {event.TimeStamp.slice(0,10)}</li>
+                <li>Host: {event.Host}</li>
+                <li>Address: {event.Address}</li>
+                <li>Theme: {event.Cuisine}</li>
+              </ul>
+              <button>Cancel Booking</button>
+            </div>
+          );
         })}
       </div>
-    )
+    );
   }
 }
 
