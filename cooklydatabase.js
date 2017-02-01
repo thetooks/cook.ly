@@ -86,7 +86,7 @@ module.exports.Specialty = Specialty;
 connection.sync().then(function() {
   for (let i = 1; i < 5; i++) {
     // fill the database with test data
-    // currently 
+    // currently making 4 pieces of data for each of the tables
     User.build({
       FirstName: 'Guest',
       LastName: '' + i,
