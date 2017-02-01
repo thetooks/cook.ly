@@ -35,7 +35,6 @@ router.get('/getAllEvents', function(req, res){
 router.get('/getUserEvents', function(req, res) {
   // USER TABLE IS CURRENTLY BROKEN
   // PULL STRAIGHT FROM EVENTS TABLE REGARDLESS OF USER INVOLVEMENT OF THE EVENT
-
   Event.findAll({
     where: {
       Cuisine: 'Rainbow Cake'
@@ -43,7 +42,12 @@ router.get('/getUserEvents', function(req, res) {
   }).then(function(data) {
     res.send(JSON.stringify(data));
   });
+});
 
+router.get('/getEvents', function(req, res) {
+  Event.findAll().then(function(data) {
+    res.send(JSON.stringify(data));
+  });
 });
 
 module.exports = router;
