@@ -20,13 +20,15 @@ router.get('/', function(req, res) {
 
 router.get('/getAllEvents', function(req, res){
   Event.build({
-      TimeStamp: '2017-01-01',
-      Cuisine: 'Rainbow Cake',
-      MaxsSeats: 20,
-      Address: 'Cake Street, Rainbow Unicorn Island'
-    }).save().then(function() {
-      res.send('Event added!');
-    });
+    TimeStamp: '2017-01-01',
+    Cuisine: 'Rainbow Cake',
+    MaxsSeats: 20,
+    Address: 'Cake Street, Rainbow Unicorn Island'
+  })
+  .save()
+  .then(function() {
+    res.send('Event added!');
+  });
 
   // query the data
   // push the data into events as they come in
@@ -35,19 +37,17 @@ router.get('/getAllEvents', function(req, res){
 router.get('/getUserEvents', function(req, res) {
   // USER TABLE IS CURRENTLY BROKEN
   // PULL STRAIGHT FROM EVENTS TABLE REGARDLESS OF USER INVOLVEMENT OF THE EVENT
-  Event.findAll({
-    where: {
-      Cuisine: 'Rainbow Cake'
-    }
-  }).then(function(data) {
-    res.send(JSON.stringify(data));
-  });
+  Event.findAll()
+    .then(function(data) {
+      res.send(JSON.stringify(data));
+    });
 });
 
 router.get('/getEvents', function(req, res) {
-  Event.findAll().then(function(data) {
-    res.send(JSON.stringify(data));
-  });
+  Event.findAll()
+    .then(function(data) {
+      res.send(JSON.stringify(data));
+    });
 });
 
 module.exports = router;
