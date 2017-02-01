@@ -54,6 +54,8 @@ var Specialty = connection.define('Specialties', {
 
 User.belongsToMany(Host, {through: 'Users_Hosts'});
 Host.belongsToMany(User, {through: 'Users_Hosts'});
+User.belongsToMany(Event, {through: 'Users_Events'});
+Event.belongsToMany(User, {through: 'Users_Events'});
 Host.belongsToMany(Specialty, {through: 'Hosts_Specialties'});
 Specialty.belongsToMany(Host, {through: 'Hosts_Specialties'});
 
@@ -81,7 +83,32 @@ module.exports.Event = Event;
 module.exports.UserBooking = UserBooking;
 module.exports.Specialty = Specialty;
 
-connection.sync();
+connection.sync().then(function() {
+  for (let i = 1; i < 5; i++) {
+    // fill the database with test data
+    // currently 
+    User.build({
+      FirstName: 'Guest',
+      LastName: '' + i,
+      Address: i + 'Random Street, San Fran',
+    }).save();
+
+    Host.build({
+      FirstName: 'Host',
+      LastName: '' + i,
+      Address: i + 'Random Street, Not San Fran',
+    }).save();
+
+    Event.build({
+      TimeStamp: '2017-01-01',
+      Cuisine: 'Rainbow Cake',
+      MaxsSeats: 20,
+      Address: i + 'Cake Street, Rainbow Unicorn Island',
+      HostId: i
+    }).save();
+
+  }
+});
 
  
 // //  /*
