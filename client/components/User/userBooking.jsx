@@ -14,8 +14,6 @@ class UserBooking extends React.Component {
       method: 'GET',
       success: function(data) {
         // console.log(data);
-        var eventsArray = JSON.parse(data);
-        console.log(eventsArray);
         context.setState({
           events: JSON.parse(data)
         });
@@ -31,9 +29,10 @@ class UserBooking extends React.Component {
     return (
       <div>
         {this.state.events.map(function(event) {
+          console.log(typeof event.TimeStamp);
           return (
             <ul>
-              <li>Date: </li>
+              <li>Date: {event.TimeStamp.slice(0,10)}</li>
               <li>Host: </li>
               <li>Address: {event.Address}</li>
               <li>Theme: {event.Cuisine}</li>
