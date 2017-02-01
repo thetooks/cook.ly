@@ -1,4 +1,4 @@
-var Sequelize = require('sequelize')
+var Sequelize = require('sequelize');
 var connection = new Sequelize('cookly', 'root', '');
 
 var User = connection.define ('Users', {
@@ -22,7 +22,7 @@ var Host = connection.define('Hosts', {
   'FirstName': Sequelize.STRING,
   'LastName': Sequelize.STRING,
   'Address': Sequelize.STRING
-})
+});
 
 
 var Review = connection.define('Reviews', {
@@ -31,19 +31,18 @@ var Review = connection.define('Reviews', {
 });
 
 
-
 var Menu = connection.define('Menus', {
   'DinnerItem': Sequelize.STRING,
   'LunchItem': Sequelize.STRING,
   'BreakfastItem': Sequelize.STRING,
   'Drink Item': Sequelize.STRING
-})
+});
 
 
 var Event = connection.define('Events', {
   'TimeStamp': Sequelize.DATE,
   'Cuisine': Sequelize.STRING,
-  'MaxsSeats': Sequelize.INTEGER,
+  'MaxSeats': Sequelize.INTEGER,
   'Address': Sequelize.STRING,
 });
 // needs a host column
@@ -64,7 +63,7 @@ Host.belongsToMany(Specialty, {through: 'Hosts_Specialties'});
 Specialty.belongsToMany(Host, {through: 'Hosts_Specialties'});
 
 
-User.hasMany(Review, {as: 'Reviews'})
+User.hasMany(Review, {as: 'Reviews'});
 Location.hasMany(User, {as: 'Locations'});
 Location.hasMany(Host, {as: 'Locations'});
 Location.hasMany(Event, {as: 'Locations'});
@@ -72,6 +71,7 @@ UserPreference.hasMany(User, {as: 'Preferences'});
 User.hasMany(Review, {as: 'Users'});
 Host.hasMany(Review, {as: 'Reviews'});
 Event.hasMany(UserBooking, {as: 'Events'});
+Event.belongsTo(Host);
 
 //** Not sure if these are needed
 // Menu.belongsTo(Event); ** Not sure if these are needed
