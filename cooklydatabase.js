@@ -38,6 +38,33 @@ var UserBooking = connection.define('UserBookings', {
 //   dinnerItem: Sequelize.STRING
 // });
 
+User.belongsTo(Location);
+Host.belongsTo(Location);
+
+User.hasMany(Review);
+Host.hasMany(Review);
+
+Host.hasMany(Event);
+Location.hasMany(Event);
+
+User.belongsToMany(Event, {through: 'UserBookings'});
+Event.belongsToMany(User, {through: 'UserBookings'});
+
+
+module.exports = {
+  User: User,
+  Host: Host,
+  Location: Location,
+  Review: Review,
+  Event: Event,
+  UserBooking: UserBooking
+  // Menu: Menu
+};
+
+connection.sync();
+
+
+
 
 // var UserPreference = connection.define('Users', {
 //   'preference': Sequelize.STRING,
@@ -63,28 +90,3 @@ var UserBooking = connection.define('UserBookings', {
 // Host.hasMany(Review, {as: 'Reviews'});
 // Event.hasMany(UserBooking, {as: 'Events'});
 // Event.belongsTo(Host);
-
-User.belongsTo(Location);
-Host.belongsTo(Location);
-
-User.hasMany(Review);
-Host.hasMany(Review);
-
-Host.hasOne(Event);
-Location.hasOne(Event);
-
-User.belongsToMany(Event, {through: 'UserBookings'});
-Event.belongsToMany(User, {through: 'UserBookings'});
-
-
-module.exports = {
-  User: User,
-  Host: Host,
-  Location: Location,
-  Review: Review,
-  Event: Event,
-  UserBooking: UserBooking
-  // Menu: Menu
-};
-
-connection.sync();

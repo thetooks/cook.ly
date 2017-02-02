@@ -40,7 +40,7 @@ Models.Location.build({
 }).save();
 
 
-// Generate Diners
+// Generate Users
 Models.User.build({
   firstName: 'Neil',
   lastName: 'Armstrong',
