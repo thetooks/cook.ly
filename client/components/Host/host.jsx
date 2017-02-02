@@ -2,57 +2,22 @@ import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
 import Calendar from 'rc-calendar';
 import Thumbnail from './thumbnail.jsx';
-import $ from 'jquery';
+import ViewEvents from './ViewEvents.jsx';
 
 
 class Host extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCalendar: false,
-      events: []
+      showCalendar: false
     };
-
-    this.getAllEvents = this.getAllEvents.bind(this);
     this.calendarClick = this.calendarClick.bind(this);
-    this.eventList = this.eventList.bind(this);
-  }
-
-  getAllEvents() {
-    var context = this;
-
-    $.ajax({
-      url: '/api/allUpcommingEvents',
-      method: 'GET',
-      success: function(data) {
-        context.setState({
-          events: data
-        });
-      },
-      error: function(err, data) {
-        console.log(err, data);
-        throw err;
-      }
-    });
-  }
-
-  eventList() {
-    var list = this.state.events.map((item) =>
-      <li>{item.TimeStamp}</li>
-    );
-    return (
-      <div>
-        <h4>Upcoming Events</h4>
-        <ul>{list}</ul>
-      </div>
-    );
   }
 
   calendarClick() {
     this.setState({
       showCalendar: !this.state.showCalendar
     });
-    this.getAllEvents();
   }
 
   render() {
@@ -78,7 +43,7 @@ class Host extends React.Component {
               {Thumbnail} 
             </Col>
             <Col sm={4}>
-              {this.state.showCalendar && this.eventList()}
+              {this.state.showCalendar && <ViewEvents />}
             </Col>
             <Col sm={4}>
               {this.state.showCalendar && <Calendar />}
