@@ -2,14 +2,15 @@ import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
 import Calendar from 'rc-calendar';
 import Thumbnail from './thumbnail.jsx';
+import ViewEvents from './ViewEvents.jsx';
+
 
 class Host extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCalendar: false,
+      showCalendar: false
     };
-
     this.calendarClick = this.calendarClick.bind(this);
   }
 
@@ -41,7 +42,10 @@ class Host extends React.Component {
             <Col sm={4}>
               {Thumbnail} 
             </Col>
-            <Col sm={8}>
+            <Col sm={4}>
+              {this.state.showCalendar && <ViewEvents />}
+            </Col>
+            <Col sm={4}>
               {this.state.showCalendar && <Calendar />}
             </Col>
           </Row>

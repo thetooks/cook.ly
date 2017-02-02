@@ -18,17 +18,24 @@ router.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/client/index.html'));
 });
 
-router.get('/getAllEvents', function(req, res){
+router.get('/getAllEvents', function(req, res) {
   Host.build({
-      FirstName: 'John',
-      LastName: 'Smith',
-      Address: 'cake street',
-    }).save().then(function() {
-      res.send('added to database');
-    });
+    FirstName: 'John',
+    LastName: 'Smith',
+    Address: 'cake street',
+  }).save().then(function() {
+    res.send('added to database');
+  });
 
   // query the data
   // push the data into events as they come in
+});
+
+router.get('/api/allUpcommingEvents', function(req, res) {
+  Event.findAll().then(function(data) {
+    var list = data.map(item => item);
+    res.send(list);
+  });
 });
 
 module.exports = router;
