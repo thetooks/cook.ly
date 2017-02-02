@@ -113,7 +113,8 @@ Models.Event.build({
   cuisine: 'Mexican',
   maxSeats: 8,
   price: '$$$',
-  HostId: 2
+  HostId: 2,
+  LocationId: 5
 }).save();
 
 Models.Event.build({
@@ -122,7 +123,8 @@ Models.Event.build({
   cuisine: 'Ethiopian',
   maxSeats: 10,
   price: '$',
-  HostId: 1
+  HostId: 1,
+  LocationId: 4
 }).save();
 
 Models.Event.build({
@@ -131,7 +133,39 @@ Models.Event.build({
   cuisine: 'Japanese',
   maxSeats: 6,
   price: '$$',
-  HostId: 3
+  HostId: 3,
+  LocationId: 6
 }).save();
 
+
+// Generate User Bookings
+Models.UserBooking.build({
+  UserId: 1,
+  EventId: 1
+}).save();
+
+Models.UserBooking.build({
+  UserId: 2,
+  EventId: 1
+}).save();
+
+Models.UserBooking.build({
+  UserId: 3,
+  EventId: 1
+}).save();
+
+Models.UserBooking.build({
+  UserId: 1,
+  EventId: 2
+}).save();
+
+Models.UserBooking.build({
+  UserId: 2,
+  EventId: 2
+}).save();
+
+Models.UserBooking.build({
+  UserId: 3,
+  EventId: 3
+}).save();
 

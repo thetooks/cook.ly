@@ -1,12 +1,12 @@
 var Sequelize = require('sequelize');
 var connection = new Sequelize('cookly', 'root', '');
 
-var User = connection.define ('Users', {
+var User = connection.define('Users', {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING
 });
 
-var Host = connection.define ('Host', {
+var Host = connection.define('Host', {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING
 });
@@ -31,19 +31,16 @@ var Event = connection.define('Events', {
   price: Sequelize.STRING
 });
 
-var UserBooking = connection.define ('UserBookings', {
+var UserBooking = connection.define('UserBookings', {
 });
 
-// var UserPreference = connection.define('Users', {
-//   'preference': Sequelize.STRING,
+// var Menu = connection.define('Menus', {
+//   dinnerItem: Sequelize.STRING
 // });
 
 
-// var Menu = connection.define('Menus', {
-//   'DinnerItem': Sequelize.STRING,
-//   'LunchItem': Sequelize.STRING,
-//   'BreakfastItem': Sequelize.STRING,
-//   'Drink Item': Sequelize.STRING
+// var UserPreference = connection.define('Users', {
+//   'preference': Sequelize.STRING,
 // });
 
 // var Specialty = connection.define('Specialties', {
@@ -74,12 +71,10 @@ User.hasMany(Review);
 Host.hasMany(Review);
 
 Host.hasOne(Event);
-// Event.belongsToMany(User, {
-//   foreignKey: 'DinerId', through: 'UserBookings'
-// });
-// User.belongsToMany(Event, {through: 'UserBookings'});
+Location.hasOne(Event);
 
-
+User.belongsToMany(Event, {through: 'UserBookings'});
+Event.belongsToMany(User, {through: 'UserBookings'});
 
 
 module.exports = {
@@ -87,23 +82,9 @@ module.exports = {
   Host: Host,
   Location: Location,
   Review: Review,
-  Event: Event
+  Event: Event,
+  UserBooking: UserBooking
+  // Menu: Menu
 };
 
- 
-// //  /*
-// users has many hosts
-// hosts has users
-
-// users has many events
-// hosts has many events
-// events belongs to hosts
-// menus has one event
-
-// hosts has many specialties
-// specialties has many hosts
-
-// hosts has many reviews
-// reviews belongs to hosts
-// */ 
 connection.sync();
