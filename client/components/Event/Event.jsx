@@ -35,7 +35,7 @@ class Event extends React.Component {
 
       },
       error: function() {
-        
+
       }
     })
   }
@@ -47,10 +47,10 @@ class Event extends React.Component {
           return (
             <div key={index}>
               <ul>
-                <li>Date: {event.TimeStamp.slice(0,10)}</li>
-                <li>Host: {event.Host}</li>
-                <li>Address: {event.Address}</li>
-                <li>Theme: {event.Cuisine}</li>
+                <li>Date: {event.startTime.slice(0,10)}</li>
+                <li>Address: {event.HostId} --Still need to figure out relational query in sequelize for this--</li>
+                <li>Theme: {event.cuisine}</li>
+                <li>Price: {event.price}</li>
               </ul>
               <button onClick={() => {handleSeatBooking(index)}}>Book a Seat</button>
             </div>
