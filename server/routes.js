@@ -30,6 +30,7 @@ router.get('/getUserEvents', function(req, res) {
       return {id: event.EventId};
     });
 
+
     Event.findAll({
       where: {
         $or: eventIds
@@ -92,6 +93,13 @@ router.get('/getEvents', function(req, res) {
         res.send(JSON.stringify([JSON.parse(incData), JSON.parse(incLocations), JSON.parse(incHosts)]));
       });
     });
+  });
+});
+
+router.get('/api/allUpcommingEvents', function(req, res) {
+  Event.findAll().then(function(data) {
+    var list = data.map(item => item);
+    res.send(list);
   });
 });
 
