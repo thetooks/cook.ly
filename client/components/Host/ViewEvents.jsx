@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 class ViewEvents extends React.Component {
   constructor(props) {
@@ -7,24 +6,10 @@ class ViewEvents extends React.Component {
     this.state = {
       events: []
     };
-    this.getAllEvents();
-  }
-
-  getAllEvents() {
-    var context = this;
-    $.ajax({
-      url: '/api/allUpcommingEvents',
-      method: 'GET',
-      success: function(data) {
-        context.setState({
-          events: data
-        });
-      },
-      error: function(err, data) {
-        console.log(err, data);
-        throw err;
-      }
-    });
+    fetch('/api/allUpcommingEvents', {method: 'GET'})
+    .then((res) => res.json())
+    .then((data) => this.setState({events: data}))
+    .catch((err) => console.log('Request Failed: ', err));
   }
 
   render() {
