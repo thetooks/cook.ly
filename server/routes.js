@@ -26,24 +26,26 @@ router.get('/getUserEvents', function(req, res) {
   }).then(function(events) {
     var data = JSON.stringify(events);
     var parsedData = JSON.parse(data);
-    var allIds = parsedData.map(function(event) {
+    var eventIds = parsedData.map(function(event) {
       return {id: event.EventId};
     });
+
     Event.findAll({
       where: {
-        $or: allIds
+        $or: eventIds
       }
     }).then(function(events) {
-      res.send(JSON.stringify(events));
+      var incData = JSON.stringify(events);
+      res.send(incData);
     });
   });
 });
 
 router.get('/getEvents', function(req, res) {
   Event.findAll()
-    .then(function(data) {
-      res.send(JSON.stringify(data));
-    });
+  .then(function(data) {
+    res.send(data);
+  });
 });
 
 module.exports = router;
