@@ -13,9 +13,9 @@ class UserBooking extends React.Component {
       url: '/getUserEvents',
       method: 'GET',
       success: function(data) {
-        // console.log(data);
+        console.log(data);
         context.setState({
-          events: JSON.parse(data)
+          events: data
         });
       },
       error: function(err, data) {
@@ -32,10 +32,11 @@ class UserBooking extends React.Component {
           return (
             <div key={index}>
               <ul>
-                <li>Date: {event.TimeStamp.slice(0,10)}</li>
-                <li>Host: {event.Host}</li>
-                <li>Address: {event.Address}</li>
-                <li>Theme: {event.Cuisine}</li>
+                <li>Host: {event.HostId}</li>
+                <li>Address: {event.LocationId}</li>
+                <li>Theme: {event.cuisine}</li>
+                <li>Price: {event.price}</li>
+                <li>Date: {event.startTime.slice(0,10)}</li>
               </ul>
               <button>Cancel Booking</button>
             </div>
@@ -46,4 +47,4 @@ class UserBooking extends React.Component {
   }
 }
 
-module.exports = UserBooking
+module.exports = UserBooking;
