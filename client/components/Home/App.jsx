@@ -10,22 +10,6 @@ class App extends React.Component {
 
     this.state = {
     };
-
-    this.getAllEvents = this.getAllEvents.bind(this);
-  }
-
-  getAllEvents() {
-    $.ajax({
-      url: '/getallevents',
-      method: 'GET',
-      success: function(data) {
-        console.log(data);
-      },
-      error: function(err, data) {
-        console.log(err, data);
-        throw err;
-      }
-    })
   }
 
   render() {
@@ -33,7 +17,6 @@ class App extends React.Component {
       <div >
         <Navbar />
         {this.props.children}
-        <button onClick={this.getAllEvents}>Get all events</button>
       </div>
     );
   }
