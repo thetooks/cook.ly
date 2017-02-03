@@ -14,6 +14,7 @@ var Host = connection.define('Host', {
 var Location = connection.define('Locations', {
   state: Sequelize.STRING,
   city: Sequelize.STRING,
+  zipCode: Sequelize.STRING,
   address: Sequelize.STRING
 });
 
@@ -24,6 +25,7 @@ var Review = connection.define('Reviews', {
 });
 
 var Event = connection.define('Events', {
+  title: Sequelize.STRING,
   startTime: Sequelize.DATE,
   endTime: Sequelize.DATE,
   cuisine: Sequelize.STRING,

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon ./server/server.js",
     "webpack": "webpack -d --watch",
-    "makeTables": "node ./cooklydatabase.js"
+    "makeTables": "node ./cooklydatabase.js",
+    "makeData" : "node ./testData.js"
   },
   "repository": {
     "type": "git",
