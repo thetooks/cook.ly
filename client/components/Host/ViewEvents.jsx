@@ -1,4 +1,5 @@
 import React from 'react';
+import Event from './event.jsx';
 
 class ViewEvents extends React.Component {
   constructor(props) {
@@ -6,29 +7,35 @@ class ViewEvents extends React.Component {
     this.state = {
       events: []
     };
+
     fetch('/api/allUpcommingEvents', {method: 'GET'})
     .then((res) => res.json())
-    .then((data) => this.setState({events: data}))
+    .then((data) => {
+      for (var i = 0; i < data.length; i++) {
+        data[i].startTime = new Date(data[i].startTime);
+        data[i].endTime = new Date(data[i].endTime);
+      }
+
+      this.setState({events: data});
+    })
     .catch((err) => console.log('Request Failed: ', err));
   }
 
   render() {
-    // console.log(this.state.events);
+    var context = this;
     var list = this.state.events.map((item) =>
       <div key={item.id}>
-        <h5>Event Title</h5>
-        <ul>
-          <li>{item.cuisine}</li>
-        </ul>
+        <Event event={item}/>
       </div>
     );
     return (
       <div>
         <h4>Upcoming Events</h4>
-        <div>{list}</div>
+        {list}
       </div>
     );
   }
 }
 
 module.exports = ViewEvents;
+

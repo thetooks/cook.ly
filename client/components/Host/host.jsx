@@ -15,9 +15,7 @@ class Host extends React.Component {
   }
 
   calendarClick() {
-    this.setState({
-      showCalendar: !this.state.showCalendar
-    });
+    this.setState({showCalendar: !this.state.showCalendar});
   }
 
   render() {
