@@ -4,18 +4,21 @@ var Models = require('../cooklydatabase.js');
 Models.Location.build({
   state: 'TX',
   city: 'Houston',
+  zipCode: '90210',
   address: '123 Cherry Lane',
 }).save();
 
 Models.Location.build({
   state: 'NC',
   city: 'Fayetteville',
+  zipCode: '90210',
   address: '2014 Forrest Hills Drive',
 }).save();
 
 Models.Location.build({
   state: 'IL',
   city: 'Chicago',
+  zipCode: '90210',
   address: '808 South Shore Drive',
 }).save();
 
@@ -24,18 +27,21 @@ Models.Location.build({
 Models.Location.build({
   state: 'FL',
   city: 'Miami',
+  zipCode: '90210',
   address: '457 Ocean Boulevard',
 }).save();
 
 Models.Location.build({
   state: 'LA',
   city: 'New Orleans',
+  zipCode: '90210',
   address: '510 Bourbon Street',
 }).save();
 
 Models.Location.build({
   state: 'NY',
   city: 'New York City',
+  zipCode: '90210',
   address: '106 Park Streed',
 }).save();
 
@@ -108,8 +114,9 @@ Models.Review.build({
 
 // Generate Events
 Models.Event.build({
+  title: 'The Last Fiesta',
   startTime: new Date(2017, 1, 8, 17),
-  endTime: new Date(2017, 1, 9, 19),
+  endTime: new Date(2017, 1, 8, 19),
   cuisine: 'Mexican',
   maxSeats: 8,
   price: '$$$',
@@ -118,6 +125,7 @@ Models.Event.build({
 }).save();
 
 Models.Event.build({
+  title: 'Rumble in the Jungle',
   startTime: new Date(2017, 1, 13, 18),
   endTime: new Date(2017, 1, 13, 20),
   cuisine: 'Ethiopian',
@@ -128,6 +136,7 @@ Models.Event.build({
 }).save();
 
 Models.Event.build({
+  title: 'Sushi Bonanza',
   startTime: new Date(2017, 1, 16, 19),
   endTime: new Date(2017, 1, 16, 21),
   cuisine: 'Japanese',
