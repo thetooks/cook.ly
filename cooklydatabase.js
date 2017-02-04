@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var connection = new Sequelize('cookly', 'root', '');
+var connection = new Sequelize('cookly', 'root', 'NaijaBoy1785');
 
 var User = connection.define('Users', {
   firstName: Sequelize.STRING,
@@ -14,7 +14,6 @@ var Host = connection.define('Host', {
 var Location = connection.define('Locations', {
   state: Sequelize.STRING,
   city: Sequelize.STRING,
-  zipCode: Sequelize.STRING,
   address: Sequelize.STRING
 });
 
@@ -25,12 +24,16 @@ var Review = connection.define('Reviews', {
 });
 
 var Event = connection.define('Events', {
-  title: Sequelize.STRING,
   startTime: Sequelize.DATE,
   endTime: Sequelize.DATE,
+  day: Sequelize.STRING,
+  week: Sequelize.STRING,
+  month: Sequelize.STRING, 
   cuisine: Sequelize.STRING,
   maxSeats: Sequelize.INTEGER,
-  price: Sequelize.STRING
+  price: Sequelize.STRING,
+  title: Sequelize.STRING,
+  description: Sequelize.STRING
 });
 
 var UserBooking = connection.define('UserBookings', {

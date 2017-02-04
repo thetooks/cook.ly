@@ -3,20 +3,27 @@ import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstra
 import Calendar from 'rc-calendar';
 import Thumbnail from './thumbnail.jsx';
 import ViewEvents from './ViewEvents.jsx';
-
+import CreateEvent from './CreateEvent.jsx';
 
 class Host extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCalendar: false
+      showCalendar: false,
+      createEvent: false
     };
     this.calendarClick = this.calendarClick.bind(this);
   }
 
   calendarClick() {
-    this.setState({showCalendar: !this.state.showCalendar});
+    this.setState({
+      showCalendar: !this.state.showCalendar
+    });
   }
+  EventClick () {
+    this.setState({createEvent: !this.state.createEvent});
+  }
+
 
   render() {
     return (
@@ -32,6 +39,7 @@ class Host extends React.Component {
                   <Button onClick={this.calendarClick}>View Calendar</Button>
                   <Button >Create Menu</Button>
                   <Button >View Menus</Button>
+                  <Button onClick={this.EventClick.bind(this)}>Create Event</Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </Col>
@@ -46,6 +54,9 @@ class Host extends React.Component {
             <Col sm={4}>
               {this.state.showCalendar && <Calendar />}
             </Col>
+             <Col sm={4}>
+              {this.state.createEvent && <CreateEvent />}
+            </Col>
           </Row>
         </Grid>
       </div>
@@ -54,4 +65,3 @@ class Host extends React.Component {
 }
 
 module.exports = Host;
-
