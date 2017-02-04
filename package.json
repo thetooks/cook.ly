@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benninh/cook.ly.git"
+    "url": "https://github.com/thetooks/cook.ly.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/benninh/cook.ly/issues"
+    "url": "https://github.com/thetooks/cook.ly/issues"
   },
-  "homepage": "https://github.com/benninh/cook.ly#readme",
+  "homepage": "https://github.com/thetooks/cook.ly#readme",
   "dependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.22.2",

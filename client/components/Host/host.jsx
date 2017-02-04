@@ -1,18 +1,26 @@
 import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
+
 import Calendar from 'rc-calendar';
 import Thumbnail from './thumbnail.jsx';
-import ViewEvents from './ViewEvents.jsx';
 import CreateEvent from './CreateEvent.jsx';
+import MenuItem from './menuItem.jsx';
+import MenuBuilder from './menubuilder.jsx';
+import DisplayMenus from './displaymenus.jsx';
+import ViewEvents from './ViewEvents.jsx';
 
 class Host extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showCalendar: false,
-      createEvent: false
+      createEvent: false,
+      showMenuBuilder: false,
+      showMenuViewer: false,
+      showCalendar: false
     };
     this.calendarClick = this.calendarClick.bind(this);
+    
   }
 
   calendarClick() {
@@ -23,8 +31,16 @@ class Host extends React.Component {
   EventClick () {
     this.setState({createEvent: !this.state.createEvent});
   }
-
-
+  menuBuilderToggle() {
+    this.setState({
+      showMenuBuilder: !this.state.showMenuBuilder,
+    });
+  }
+  menuViewerToggle() {
+    this.setState({
+      showMenuViewer: !this.state.showMenuViewer
+    });
+  }
   render() {
     return (
       <div >
@@ -35,11 +51,10 @@ class Host extends React.Component {
               <ButtonToolbar>
                 <ButtonGroup>
                   <Button bsStyle="primary">Edit Profile</Button>
-                  <Button >Schedule Event</Button>
                   <Button onClick={this.calendarClick}>View Calendar</Button>
-                  <Button >Create Menu</Button>
-                  <Button >View Menus</Button>
-                  <Button onClick={this.EventClick.bind(this)}>Create Event</Button>
+                  <Button onClick={this.EventClick.bind(this)}>Schedule Event</Button>
+                  <Button onClick={this.menuBuilderToggle.bind(this)}>Create Menu</Button>
+                  <Button onClick={this.menuViewerToggle.bind(this)}>View Menus</Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </Col>
@@ -48,6 +63,12 @@ class Host extends React.Component {
             <Col sm={4}>
               {Thumbnail} 
             </Col>
+            <Col sm={8}>
+              {this.state.showMenuBuilder && <MenuBuilder />}  
+            </Col>
+            <Col sm={8}>
+              {this.state.showMenuViewer && <DisplayMenus />}
+            </Col>  
             <Col sm={4}>
               {this.state.showCalendar && <ViewEvents />}
             </Col>

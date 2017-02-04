@@ -177,4 +177,3 @@ Models.UserBooking.build({
   UserId: 3,
   EventId: 3
 }).save();
-

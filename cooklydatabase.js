@@ -39,9 +39,9 @@ var Event = connection.define('Events', {
 var UserBooking = connection.define('UserBookings', {
 });
 
-// var Menu = connection.define('Menus', {
-//   dinnerItem: Sequelize.STRING
-// });
+var Menu = connection.define('Menus', {
+  MenuItemDesc: Sequelize.STRING
+});
 
 User.belongsTo(Location);
 Host.belongsTo(Location);
@@ -55,43 +55,17 @@ Location.hasMany(Event);
 User.belongsToMany(Event, {through: 'UserBookings'});
 Event.belongsToMany(User, {through: 'UserBookings'});
 
+User.hasMany(Menu, {as: 'Menus'});
 
 module.exports = {
+  connection: connection,
   User: User,
   Host: Host,
   Location: Location,
   Review: Review,
   Event: Event,
-  UserBooking: UserBooking
-  // Menu: Menu
+  UserBooking: UserBooking,
+  Menu: Menu
 };
 
 connection.sync();
-
-
-
-
-// var UserPreference = connection.define('Users', {
-//   'preference': Sequelize.STRING,
-// });
-
-// var Specialty = connection.define('Specialties', {
-//   'Speciality': Sequelize.STRING
-// });
-
-
-// User.belongsToMany(Host, {through: 'Users_Hosts'});
-// Host.belongsToMany(User, {through: 'Users_Hosts'});
-// Host.belongsToMany(Specialty, {through: 'Hosts_Specialties'});
-// Specialty.belongsToMany(Host, {through: 'Hosts_Specialties'});
-
-
-// User.hasMany(Review, {as: 'Reviews'});
-// Location.hasMany(User, {as: 'Locations'});
-// Location.hasMany(Host, {as: 'Locations'});
-// Location.hasMany(Event, {as: 'Locations'});
-// UserPreference.hasMany(User, {as: 'Preferences'});
-// User.hasMany(Review, {as: 'Users'});
-// Host.hasMany(Review, {as: 'Reviews'});
-// Event.hasMany(UserBooking, {as: 'Events'});
-// Event.belongsTo(Host);
