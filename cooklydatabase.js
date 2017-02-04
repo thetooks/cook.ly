@@ -25,12 +25,16 @@ var Review = connection.define('Reviews', {
 });
 
 var Event = connection.define('Events', {
-  title: Sequelize.STRING,
   startTime: Sequelize.DATE,
   endTime: Sequelize.DATE,
+  day: Sequelize.STRING,
+  week: Sequelize.STRING,
+  month: Sequelize.STRING, 
   cuisine: Sequelize.STRING,
   maxSeats: Sequelize.INTEGER,
-  price: Sequelize.STRING
+  price: Sequelize.STRING,
+  title: Sequelize.STRING,
+  description: Sequelize.STRING
 });
 
 var UserBooking = connection.define('UserBookings', {

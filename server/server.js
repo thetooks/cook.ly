@@ -6,13 +6,11 @@ var bodyParser = require('body-parser');
 var app = express();
 var port = 3000;
 
-
-
 app.use(express.static(path.join(__dirname, '/../client')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// HANDLE ROUTING
+
 app.use('/', router);
 
 app.listen(port, function() {

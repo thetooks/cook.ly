@@ -1,8 +1,9 @@
 import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
+
 import Calendar from 'rc-calendar';
 import Thumbnail from './thumbnail.jsx';
-
+import CreateEvent from './CreateEvent.jsx';
 import MenuItem from './menuItem.jsx';
 import MenuBuilder from './menubuilder.jsx';
 import DisplayMenus from './displaymenus.jsx';
@@ -13,6 +14,7 @@ class Host extends React.Component {
     super(props);
     this.state = {
       showCalendar: false,
+      createEvent: false,
       showMenuBuilder: false,
       showMenuViewer: false,
       showCalendar: false
@@ -22,7 +24,12 @@ class Host extends React.Component {
   }
 
   calendarClick() {
-    this.setState({showCalendar: !this.state.showCalendar});
+    this.setState({
+      showCalendar: !this.state.showCalendar
+    });
+  }
+  EventClick () {
+    this.setState({createEvent: !this.state.createEvent});
   }
   menuBuilderToggle() {
     this.setState({
@@ -34,7 +41,6 @@ class Host extends React.Component {
       showMenuViewer: !this.state.showMenuViewer
     });
   }
-  
   render() {
     return (
       <div >
@@ -45,8 +51,8 @@ class Host extends React.Component {
               <ButtonToolbar>
                 <ButtonGroup>
                   <Button bsStyle="primary">Edit Profile</Button>
-                  <Button >Schedule Event</Button>
                   <Button onClick={this.calendarClick}>View Calendar</Button>
+                  <Button onClick={this.EventClick.bind(this)}>Schedule Event</Button>
                   <Button onClick={this.menuBuilderToggle.bind(this)}>Create Menu</Button>
                   <Button onClick={this.menuViewerToggle.bind(this)}>View Menus</Button>
                 </ButtonGroup>
@@ -69,6 +75,9 @@ class Host extends React.Component {
             <Col sm={4}>
               {this.state.showCalendar && <Calendar />}
             </Col>
+             <Col sm={4}>
+              {this.state.createEvent && <CreateEvent />}
+            </Col>
           </Row>
         </Grid>
       </div>
@@ -77,4 +86,3 @@ class Host extends React.Component {
 }
 
 module.exports = Host;
-
