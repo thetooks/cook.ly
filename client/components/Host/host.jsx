@@ -62,6 +62,7 @@ class Host extends React.Component {
             </Col>
             <Col sm={8}>
               {this.state.showMenuViewer && <DisplayMenus />}
+            </Col>  
             <Col sm={4}>
               {this.state.showCalendar && <ViewEvents />}
             </Col>
