@@ -4,6 +4,7 @@
 .spacerL90 {
   margin-left: 90px; 
 }
+
 .spacerL10 {
   margin-left: 10px; 
 }
@@ -26,4 +27,8 @@
 #menuViewer {
 	height: 375px;
   border: 1px solid #cccccc;
+
+.upcomming-event:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

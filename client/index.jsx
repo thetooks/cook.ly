@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router';
+
 import App from './components/Home/app.jsx';
 import Host from './components/Host/host.jsx';
 import Carousel from './components/Home/carousel.jsx';

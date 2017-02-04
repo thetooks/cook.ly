@@ -2,9 +2,11 @@ import React from 'react';
 import {Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
 import Calendar from 'rc-calendar';
 import Thumbnail from './thumbnail.jsx';
+
 import MenuItem from './menuItem.jsx';
 import MenuBuilder from './menubuilder.jsx';
 import DisplayMenus from './displaymenus.jsx';
+import ViewEvents from './ViewEvents.jsx';
 
 class Host extends React.Component {
   constructor(props) {
@@ -12,17 +14,15 @@ class Host extends React.Component {
     this.state = {
       showCalendar: false,
       showMenuBuilder: false,
-      showMenuViewer: false
+      showMenuViewer: false,
+      showCalendar: false
     };
-
     this.calendarClick = this.calendarClick.bind(this);
     
   }
 
   calendarClick() {
-    this.setState({
-      showCalendar: !this.state.showCalendar
-    });
+    this.setState({showCalendar: !this.state.showCalendar});
   }
   menuBuilderToggle() {
     this.setState({
@@ -61,7 +61,9 @@ class Host extends React.Component {
               {this.state.showMenuBuilder && <MenuBuilder />}  
             </Col>
             <Col sm={8}>
-              {this.state.showMenuViewer && <DisplayMenus />}  
+              {this.state.showMenuViewer && <DisplayMenus />}
+            <Col sm={4}>
+              {this.state.showCalendar && <ViewEvents />}
             </Col>
             <Col sm={4}>
               {this.state.showCalendar && <Calendar />}
