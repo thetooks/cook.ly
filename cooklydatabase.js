@@ -55,6 +55,7 @@ Event.belongsToMany(User, {through: 'UserBookings'});
 User.hasMany(Menu, {as: 'Menus'});
 
 module.exports = {
+  connection: connection,
   User: User,
   Host: Host,
   Location: Location,
