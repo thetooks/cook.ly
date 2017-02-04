@@ -1,7 +1,5 @@
 var router = require('express').Router();
 
-var Sequelize = require('sequelize');
-var connection = new Sequelize('cookly', 'root', '');
 
 var Models = require('../cooklydatabase.js');
 var User = Models.User;
@@ -101,6 +99,26 @@ router.get('/api/allUpcommingEvents', function(req, res) {
     var list = data.map(item => item);
     res.send(list);
   });
+});
+router.get('/api/menus', function(req, res) {
+  Models.Menu.findAll({
+    where: {
+      UserId: 3
+    }
+  })
+  .then(function(data) {
+    res.send(data);
+  })
+  .catch(err => console.log(err));
+});
+router.post('/api/menus', function(req, res) {
+  console.log(req.body);
+  console.log(JSON.stringify(req.body));
+  Models.Menu.create({ UserId: 3, MenuItemDesc: JSON.stringify(req.body) })
+  .then(function(task) {
+    res.send();
+  })
+  .catch(err => console.log(err));
 });
 
 module.exports = router;
