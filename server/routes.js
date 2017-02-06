@@ -14,7 +14,8 @@ router.get('/api/getUserEvents', function(req, res) {
       ev.price,
       ev.startTime AS date,
       ub.UserId AS userId,
-      ev.id AS eventId
+      ev.id AS eventId,
+      ev.title AS eventTitle
     FROM
       Events AS ev
       JOIN Hosts AS hs ON hs.id = ev.HostId
@@ -35,20 +36,21 @@ router.get('/api/getEvents', function(req, res) {
       CONCAT(lc.address, ', ', lc.city, ', ', lc.state) AS address,
       ev.cuisine AS theme,
       ev.price,
-      ev.startTime AS date
+      ev.startTime AS date,
+      ev.id AS eventId,
+      ev.title AS eventTitle
     FROM
       Events AS ev
       JOIN Hosts AS hs ON hs.id = ev.HostId
-      JOIN Locations AS lc ON lc.id = ev.LocationId
-      JOIN UserBookings AS ub ON ub.EventId = ev.id`,
-      {type: Models.connection.QueryTypes.SELECT}
+      JOIN Locations AS lc ON lc.id = ev.LocationId`,
+    {type: Models.connection.QueryTypes.SELECT}
   ).then(function(data) {
     res.send(data);
   });
 });
 
 router.post('/api/userCancelBooking', function(req, res) {
-  console.log('INSIDE userCancelBooking Post Request in routes with data: ', req.body);
+  // console.log('INSIDE userCancelBooking Post Request in routes with data: ', req.body);
   var data = req.body;
   Models.UserBooking.destroy({
     where: {
@@ -56,6 +58,20 @@ router.post('/api/userCancelBooking', function(req, res) {
       EventId: data.eventId
     }
   })
+  .then(function() {
+    res.send();
+  })
+  .catch(err => console.log(err));
+});
+
+router.post('/api/userBookEvent', function(req, res) {
+  var data = req.body;
+  console.log('LINE 70 ------ : ', data);
+  Models.UserBooking.build({
+    UserId: 1,
+    EventId: data.eventId
+  })
+  .save()
   .then(function() {
     res.send();
   })
