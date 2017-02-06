@@ -28,7 +28,10 @@
 	height: 375px;
   border: 1px solid #cccccc;
 
-.upcomming-event:hover {
+.upcomming-event: hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
+
+

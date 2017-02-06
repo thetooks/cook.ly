@@ -12,7 +12,8 @@ class DisplayMenus extends React.Component {
 
   retrieveMenus() {
     var context = this;
-    fetch('./api/menus')  
+    var email = this.props.profile.email;
+    fetch('./api/menus/' + email)  
       .then(  
         function(response) {  
           if (response.status !== 200) {  
