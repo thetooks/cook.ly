@@ -34,10 +34,11 @@ class MenuBuilder extends React.Component {
       />
     );
   }
+
   onSaveMenu () {
-    window.test = this.state.menuItems;
     var data = JSON.stringify(this.state.menuItems); 
-    fetch('./api/menus', {  
+    var email = this.props.profile.email;
+    fetch('./api/menus/' + email, {  
       method: 'post',
       headers: {  
         "Content-type": "application/json; charset=UTF-8"  

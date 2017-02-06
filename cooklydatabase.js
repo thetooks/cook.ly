@@ -8,7 +8,9 @@ var User = connection.define('Users', {
 
 var Host = connection.define('Host', {
   firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING
+  lastName: Sequelize.STRING,
+  email: Sequelize.STRING,
+  identity: Sequelize.STRING
 });
 
 var Location = connection.define('Locations', {
@@ -53,7 +55,7 @@ Location.hasMany(Event);
 User.belongsToMany(Event, {through: 'UserBookings'});
 Event.belongsToMany(User, {through: 'UserBookings'});
 
-User.hasMany(Menu, {as: 'Menus'});
+Host.hasMany(Menu, {as: 'Menus'});
 
 module.exports = {
   connection: connection,

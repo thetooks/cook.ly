@@ -19,9 +19,9 @@ class Navigationbar extends React.Component {
       
           <Nav pullRight>
             <LinkContainer to="/host"><NavItem eventKey={1} >Host Dashboard</NavItem></LinkContainer>
-            <LinkContainer to="/user"><NavItem eventKey={1} >User Dashboard</NavItem></LinkContainer>
-            <LinkContainer to="/signup"><NavItem eventKey={2} >SIGN UP</NavItem></LinkContainer>
-            <LinkContainer to="/login"><NavItem eventKey={3} >SIGN IN </NavItem></LinkContainer>
+            <LinkContainer to="/user"><NavItem eventKey={2} >User Dashboard</NavItem></LinkContainer>
+            <LinkContainer to="/signup"><NavItem eventKey={3} >SIGN UP</NavItem></LinkContainer>
+            <LinkContainer to="/login"><NavItem eventKey={4} >SIGN IN </NavItem></LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
