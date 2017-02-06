@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
-import {Jumbotron, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, Button, Image} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, Button, Image, DateTimePicker} from 'react-bootstrap';
+import Calendar from 'rc-calendar';
+
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -10,7 +12,6 @@ class CreateEvent extends React.Component {
       startTime: '',
       endTime: '',
       day: '', 
-      time: '',
       week: '',
       month: '',
       cuisine: '',
@@ -30,10 +31,9 @@ class CreateEvent extends React.Component {
       data: {
         'startTime': this.state.startTime,
         'endTime': this.state.endTime,
-        'day': this.state.day, 
-        'time': this.state.time,
+        'day': this.handleInputDay(), 
         'week': this.state.week,
-        'month': this.state.month,
+        'month': this.handleInputMonth(),
         'cuisine': this.state.cuisine,
         'address': this.state.address,
         'city': this.state.city,
@@ -51,272 +51,213 @@ class CreateEvent extends React.Component {
       dataType: 'json'
     });
   }
-  inputTitle (e) {
-    this.setState({title: e.target.value});
+  handleInputChange (e) {
+    this.setState({[e.target.name]: e.target.value});
   }
-  inputStartTime (e) {
-    this.setState({startTime: e.target.value});
-  }
-  inputEndTime(e) {
-    this.setState({endTime: e.target.value});
-  }
-  inputDay (e) {
-    this.setState({day: e.target.value});
-  }
-  inputTime (e) {
-    this.setState({'time': e.target.value});
+  handleInputDay() {
+    var day = this.props.date.substring(2, 4);
+    if (day[1] === '/') {
+      day = day.substring(0, 1);
+    }
+    return day;
 
   }
-  inputWeek (e) {
-    this.setState({'week': e.target.value});
+  handleInputMonth() {
+    var month = this.props.date.substring(0, 1);
+    return month;
   }
-  inputMonth (e) {
-    this.setState({'month': e.target.value});
+  handleStartTime(e) {
+    var start = e.target.value.substring(0, 1);
+    this.setState({startTime: start});
   }
-  inputCuisine (e) {
-    this.setState({'cuisine': e.target.value});
-  }
-  inputAddress (e) {
-    this.setState({'address': e.target.value});
-  }
-  inputCity (e) {
-    this.setState({city: e.target.value});
-  }
-  inputState (e) {
-    this.setState({state: e.target.value});
-  }
-  inputMaxSeats (e) {
-    this.setState({maxseats: e.target.value});
-  }
-  inputDescription(e) {
-    this.setState({description: e.target.value});
+  handleEndTime (e) {
+    var end = e.target.value.substring(0, 1);
+    this.setState({endTime: end});
   }
 
   render () {
     return (
-      <div >
-       <Grid fluid>
+      <div>
+
+        <Col >
         <Row className="show-grid">
-          <Col md={4} ><code> Title </code></Col>
-          <Col md={8}>
-            <form>
-               <FormGroup
-            controlId="formBasicText"
-            >
-              <FormControl
-              onChange = {this.inputTitle.bind(this)}
-              type="text"
-              placeholder = 'Title'
-              />
+        <Col md={12}>
+        <form>
+        <FormGroup
+          controlId="formBasicText"
+         >
+        <FormControl
+         name = 'title'
+         onChange = {this.handleInputChange.bind(this)}
+         type="text"
+          placeholder = 'Title'
+         />
         <FormControl.Feedback />
         </FormGroup>
-            </form>
-          </Col>
-       </Row>
-
-       <Row className="show-grid">
-         <Col md={4} ><code> Time </code></Col>
-         <Col md={4}>
-          <form>
-           <FormGroup
-             controlId="formBasicText"
-           >
-            <FormControl
-            onChange = {this.inputStartTime.bind(this)}
-              type="text"
-              placeholder = 'Start Time'
-            />
-            <FormControl.Feedback />
-          </FormGroup>
         </form>
-         </Col>
-         <Col md={4}>
-          <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-            <FormControl
-            onChange = {this.inputEndTime.bind(this)}
-              type="text"
-              placeholder = 'End Time'
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-       </form>
-         </Col>
-       </Row>
-
-       <Row className="show-grid">
-         <Col md={4} ><code> Day/Week/Month</code></Col>
-
-         <Col md={2}>
-           <form>
-           <FormGroup
-            controlId="formBasicText"
-           >
-           <FormControl
-              type="text"
-              placeholder = 'D'
-              onChange = {this.inputDay.bind(this)}
-            />
-          <FormControl.Feedback />
-          </FormGroup>
-          </form>
         </Col>
+        </Row>
 
-          <Col md={2}>
-          <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-           <FormControl
-              type="text"
-              placeholder = 'W'
-              onChange = {this.inputWeek.bind(this)}
-            />
-           <FormControl.Feedback />
-          </FormGroup>
+
+        <Row className="show-grid">
+        <Col md={6}>
+        <form>
+        <FormGroup
+         controlId="formBasicText"
+           >
+         <FormControl
+          onChange = {this.handleStartTime.bind(this)}
+          name = 'startTime'
+          type="text"
+          placeholder = 'e.g. 6:00 p'
+         />
+        <FormControl.Feedback />
+        </FormGroup>
         </form>
-         </Col>
-
-          <Col md={2}>
-          <form>
-          <FormGroup
+        </Col>
+        <Col md={6}>
+        <form>
+        <FormGroup
             controlId="formBasicText"
-          >
-          <FormControl
-              type="text"
-              placeholder = 'M'
-              onChange = {this.inputMonth.bind(this)}
+         >
+        <FormControl
+          onChange = {this.handleEndTime.bind(this)}
+          name = 'endTime'
+          type="text"
+          placeholder = 'e.g. 8:00 p'
+         />
+        <FormControl.Feedback />
+        </FormGroup>
+        </form>
+        </Col>
+        </Row>
 
-            />
-            <FormControl.Feedback />
-          </FormGroup>
+        <Row className="show-grid">
+        <Col md={12}>
+        <form>
+        <FormGroup
+         controlId="formBasicText"
+        >
+        <FormControl
+          name = 'cuisine'
+          type="text"
+          onChange = {this.handleInputChange.bind(this)}
+          placeholder = 'Cuisine e.g. Indian'
+          />
+         <FormControl.Feedback />
+         </FormGroup>
          </form>
          </Col>
-       </Row>
+         </Row>
+
 
         <Row className="show-grid">
-         <Col md={4} ><code> Cusine/Theme </code></Col>
-
-         <Col md={6}>
-          <form>
-           <FormGroup
-            controlId="formBasicText"
-           >
-            <FormControl
-              type="text"
-              onChange = {this.inputCuisine.bind(this)}
-              placeholder = 'e.g. Indian'
-             />
-           <FormControl.Feedback />
-           </FormGroup>
-          </form>
-         </Col>
-       </Row>
-
-        <Row className="show-grid">
-         <Col md={4} ><code> Address </code></Col>
-
-         <Col md={4}>
-          <form>
-          <FormGroup
-            controlId="formBasicText"
+        <Col md={12}>
+        <form>
+        <FormGroup
+          controlId="formBasicText"
           >
-            <FormControl
-              onChange = {this.inputAddress.bind(this)}
-              type="text"
-               value = {this.state.address}
+        <FormControl
+          name = 'address'
+          placeholder = 'Address'
+          onChange = {this.handleInputChange.bind(this)}
+          type="text"
+          value = {this.state.address}
             />
-            <FormControl.Feedback />
-          </FormGroup>
-          </form>
-         </Col>
-       </Row>
-
-
-        <Row className="show-grid">
-         <Col md={4} ><code> City/State </code></Col>
-         <Col md={4}>
-          <form>
-           <FormGroup
-             controlId="formBasicText"
-           >
-            <FormControl
-            onChange = {this.inputCity.bind(this)}
-              type="text"
-              placeholder = 'City'
-            />
-            <FormControl.Feedback />
-          </FormGroup>
+        <FormControl.Feedback />
+        </FormGroup>
         </form>
-         </Col>
-         <Col md={4}>
-          <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-            <FormControl
-            onChange = {this.inputState.bind(this)}
-              type="text"
-              placeholder = 'State'
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-       </form>
-         </Col>
-       </Row>
+        </Col>
+        </Row>
 
+
+        <Row className="show-grid">
+        <Col md={6}>
+        <form>
+        <FormGroup
+         controlId="formBasicText"
+        >
+        <FormControl
+         name = 'city'
+         onChange = {this.handleInputChange.bind(this)}
+         type="text"
+         placeholder = 'City'
+        />
+        <FormControl.Feedback />
+        </FormGroup>
+        </form>
+        </Col>
+        <Col md={6}>
+        <form>
+        <FormGroup
+         controlId="formBasicText"
+          >
+        <FormControl
+          name = 'state'
+          onChange = {this.handleInputChange.bind(this)}
+          type="text"
+          placeholder = 'State'
+            />
+         <FormControl.Feedback />
+        </FormGroup>
+        </form>
+        </Col>
+        </Row>
+
+
+        <Row className="show-grid">
+        <Col md={12}>
+        <form>
+        <FormGroup
+          controlId="formBasicText"
+          >
+        <FormControl
+          placeholder = 'Max Seats'
+          name = 'maxseats'
+          onChange = {this.handleInputChange.bind(this)}
+          type="text"
+        />
+        <FormControl.Feedback />
+        </FormGroup>
+        </form>
+        </Col>
+        </Row>
+
+
+        <Row className="show-grid">
+        <Col md={12}>
+        <form>
+        <FormGroup
+        controlId="formBasicText"
+        >
+        <FormControl
+          name = 'description'
+          type="text"
+          componentClass="textarea"
+          placeholder = "What should your guests expect?"
+          onChange = {this.handleInputChange.bind(this)}
+         />
+        <FormControl.Feedback />
+        </FormGroup>
+        </form>
+        </Col>
+        </Row>
+
+         &nbsp;
          <Row className="show-grid">
-         <Col md={4} ><code> Max Seats </code></Col>
          <Col md={4}>
-         <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-            <FormControl
-            onChange = {this.inputMaxSeats.bind(this)}
-              type="text"
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-        </form>
-         </Col>
-       </Row>
-
-
-       <Row className="show-grid">
-         <Col md={4} ><code> Description </code></Col>
-         <Col md={8}>
-          <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-            <FormControl
-              type="text"
-              componentClass="textarea"
-              placeholder = "What should your guests expect?"
-              onChange = {this.inputDescription.bind(this)}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-        </form>
-         </Col>
-       </Row>
-
-
-       &nbsp;
-       <Row className="show-grid">
-       <Col md={2}>
-        <form onSubmit={this.postEvent.bind(this)}>
-              <Button type="submit"> Create an Event!</Button>
+         <form onSubmit={this.postEvent.bind(this)}>
+         <Button type="submit"> Create an Event!</Button>
          </form>
-        </Col>
-       </Row>
-     </Grid>
-    </div>
+         </Col>
+         </Row>
+         </Col>
+
+      </div>
+
     );
   }
 }
 
 module.exports = CreateEvent;
+

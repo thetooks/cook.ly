@@ -18,6 +18,8 @@ class Host extends React.Component {
       createEvent: false,
       showMenuBuilder: false,
       showMenuViewer: false,
+      showCalendar: false,
+      date: '',
       profile: props.auth.getProfile()
     };
     this.calendarClick = this.calendarClick.bind(this);
@@ -99,6 +101,13 @@ class Host extends React.Component {
     });
   }
 
+  handleDateChange() {
+
+    // this.setState({date: document.getElementsByClassName('rc-calendar-input')[0].value }, function () { console.log(this.state.date); } );
+    this.setState({date: document.getElementsByClassName('rc-calendar-input')[0].value});
+    // console.log(document.getElementsByClassName('rc-calendar-input')[0].value);
+    
+  }
   render() {
     const { profile } = this.state;
     this.saveUserData();
@@ -137,7 +146,11 @@ class Host extends React.Component {
               {this.state.showCalendar && <Calendar />}
             </Col>
              <Col sm={4}>
-              {this.state.createEvent && <CreateEvent />}
+              {this.state.createEvent && <CreateEvent date = {this.state.date} />}
+            </Col>
+             <Col sm={4}>
+              {this.state.createEvent && <Calendar onChange = {this.handleDateChange.bind(this) }/> }
+
             </Col>
           </Row>
         </Grid>
