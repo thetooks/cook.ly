@@ -17,7 +17,7 @@ class UserBooking extends React.Component {
 
   getUserEvents() {
     var context = this;
-    
+
     fetch(
       './api/getUserEvents', 
       {  
@@ -30,7 +30,7 @@ class UserBooking extends React.Component {
     )
     .then(function (response) {  
       response.json().then(function(data) {
-        console.log('Request succeeded with JSON response', data);
+        // console.log('Request succeeded with JSON response', data);
         context.setState({
           events: data
         }); 
@@ -43,6 +43,7 @@ class UserBooking extends React.Component {
   }
 
   handleCancelBooking(eventId, userId) {
+    var context = this;
     var data = JSON.stringify({
           eventId: eventId,
           userId: userId
@@ -57,7 +58,7 @@ class UserBooking extends React.Component {
         body: data
       }
     ).then(function() {
-      this.getUserEvents();
+      context.getUserEvents();
     });
   }
 

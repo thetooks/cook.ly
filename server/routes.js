@@ -56,6 +56,9 @@ router.post('/api/userCancelBooking', function(req, res) {
       EventId: data.eventId
     }
   })
+  .then(function() {
+    res.send();
+  })
   .catch(err => console.log(err));
 });
 
