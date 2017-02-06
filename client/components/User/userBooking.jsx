@@ -9,19 +9,6 @@ class UserBooking extends React.Component {
 
     // ajax request to the server to pull
     var context = this;
-    // $.ajax({
-    //   url: '/api/getUserEvents',
-    //   method: 'GET',
-    //   success: function(data) {
-    //     context.setState({
-    //       events: data
-    //     });
-    //   },
-    //   error: function(err, data) {
-    //     console.log(err, data);
-    //     throw err;
-    //   }
-    // });
 
     fetch(
       './api/getUserEvents', 
@@ -35,7 +22,7 @@ class UserBooking extends React.Component {
     )
     .then(function (response) {  
       response.json().then(function(data) {
-        console.log('Request succeeded with JSON response', data);
+        // console.log('Request succeeded with JSON response', data);
         context.setState({
           events: data
         }); 
@@ -59,7 +46,7 @@ class UserBooking extends React.Component {
                 <li>Address: {event.address}</li>
                 <li>Theme: {event.theme}</li>
                 <li>Price: {event.price}</li>
-                <li>Date: {event.date.slice(0,10) + ' ' + event.date.slice(11, 19)}</li>
+                <li>Date: {event.date.slice(0,10) + ' at ' + event.date.slice(11, 19)}</li>
               </ul>
               <button>Cancel Booking</button>
             </div>
