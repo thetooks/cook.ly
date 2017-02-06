@@ -117,7 +117,7 @@ class Host extends React.Component {
         <Grid>
           <Row>  
             <Col md={12}>
-              <ButtonToolbar justified>
+              <ButtonToolbar >
                 <ButtonGroup >
                   <Button bsStyle="primary">Edit Profile</Button>
                   <Button onClick={this.calendarClick}>View Calendar</Button>
@@ -133,7 +133,7 @@ class Host extends React.Component {
             <Col sm={4}>
               <Profile profile={profile} /> 
             </Col>
-            <Col xs={2} md={2}>
+            <Col xs={8} md={8}>
               {this.state.showMenuBuilder && <MenuBuilder profile={profile} />}  
             </Col>
             <Col sm={8}>
