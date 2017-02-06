@@ -9,18 +9,41 @@ class UserBooking extends React.Component {
 
     // ajax request to the server to pull
     var context = this;
-    $.ajax({
-      url: '/api/getUserEvents',
-      method: 'GET',
-      success: function(data) {
+    // $.ajax({
+    //   url: '/api/getUserEvents',
+    //   method: 'GET',
+    //   success: function(data) {
+    //     context.setState({
+    //       events: data
+    //     });
+    //   },
+    //   error: function(err, data) {
+    //     console.log(err, data);
+    //     throw err;
+    //   }
+    // });
+
+    fetch(
+      './api/getUserEvents', 
+      {  
+        method: 'GET',
+        headers: 
+          {  
+            "Content-type": "application/json; charset=UTF-8"
+          }
+      }
+    )
+    .then(function (response) {  
+      response.json().then(function(data) {
+        console.log('Request succeeded with JSON response', data);
         context.setState({
           events: data
-        });
-      },
-      error: function(err, data) {
-        console.log(err, data);
-        throw err;
-      }
+        }); 
+      });
+    })  
+    .catch(function (error) {  
+      console.log('Request failed', error);
+      throw error; 
     });
   }
 
