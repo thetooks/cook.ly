@@ -101,38 +101,37 @@ router.post('/api/postevent', function (req, res) {
   res.statusCode = 201;
   console.log(req.body);
   var startTime = req.body.startTime;
+  startTime = Number(startTime);
   var endTime = req.body.endTime;
+  endTime = Number(endTime);
   var day = req.body.day;
-  var time = req.body.time;
-  var week = req.body.week;
+  day = Number(day);
   var month = req.body.month;
+  month = Number(month);
   var cuisine = req.body.cuisine;
   var address = req.body.address;
   var city = req.body.city;
   var state = req.body.state;
   var maxseats = req.body.maxseats;
+  maxseats = Number(maxseats);
   var title = req.body.title;
   var description = req.body.description;
 
-  doesEntryExist(Location, 'City', city, function (cityBool, id) {
-    Event.build({
+  doesEntryExist(Models.Location, 'City', city, function (cityBool, id) {
+    Models.Event.build({
       'cuisine': cuisine,
-      'address': address,
       'maxSeats': maxseats,
-      'startTime': new Date(2017, 1, 8, 17),
-      'endTime': new Date(2017, 2, 8, 17),
-      'day': day,
-      'time': time,
-      'week': week,
-      'month': month,
+      'startTime': new Date(2017, month + 1, day, startTime),
+      'endTime': new Date(2017, month + 1, day, endTime),
       'title': title,
       'description': description,
+      'price': '9.99'
     }).save().then(function (event) {
       if (cityBool) {
         event.update({'LocationId': id});
       }
       if (!cityBool) {
-        Location.build({
+        Models.Location.build({
           'city': city,
           'state': state,
           'address': address
