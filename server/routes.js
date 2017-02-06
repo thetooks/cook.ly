@@ -12,7 +12,9 @@ router.get('/api/getUserEvents', function(req, res) {
       CONCAT(lc.address, ', ', lc.city, ', ', lc.state) AS address,
       ev.cuisine AS theme,
       ev.price,
-      ev.startTime AS date
+      ev.startTime AS date,
+      ub.UserId AS userId,
+      ev.id AS eventId
     FROM
       Events AS ev
       JOIN Hosts AS hs ON hs.id = ev.HostId
@@ -45,12 +47,25 @@ router.get('/api/getEvents', function(req, res) {
   });
 });
 
+router.post('/api/userCancelBooking', function(req, res) {
+  console.log('INSIDE userCancelBooking Post Request in routes with data: ', req.body);
+  var data = req.body;
+  Models.UserBooking.destroy({
+    where: {
+      UserId: data.userId,
+      EventId: data.eventId
+    }
+  })
+  .catch(err => console.log(err));
+});
+
 router.get('/api/allUpcommingEvents', function(req, res) {
   Models.Event.findAll().then(function(data) {
     var list = data.map(item => item);
     res.send(list);
   });
 });
+
 router.get('/api/menus', function(req, res) {
   Models.Menu.findAll({
     where: {
@@ -62,6 +77,7 @@ router.get('/api/menus', function(req, res) {
   })
   .catch(err => console.log(err));
 });
+
 router.post('/api/menus', function(req, res) {
   console.log(req.body);
   console.log(JSON.stringify(req.body));
