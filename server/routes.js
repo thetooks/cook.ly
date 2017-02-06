@@ -5,6 +5,10 @@ router.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/client/index.html'));
 });
 
+router.get('/login', function(req, res) {
+  res.redirect('/');
+});
+
 router.get('/api/getUserEvents', function(req, res) {
   Models.connection.query(
     `SELECT
@@ -63,25 +67,42 @@ router.get('/api/allUpcommingEvents', function(req, res) {
     res.send(list);
   });
 });
-router.get('/api/menus', function(req, res) {
-  Models.Menu.findAll({
-    where: {
-      UserId: 3
-    }
-  })
-  .then(function(data) {
-    res.send(data);
-  })
-  .catch(err => console.log(err));
+
+router.get('/api/menus/:email', function(req, res) {
+  Models.Host.findOne({ where: {email: req.params.email} }).then(function(Host) {
+    
+    Models.Menu.findAll({
+      where: {
+        HostId: Host.id
+      }
+    })
+    .then(function(data) {
+      res.send(data);
+    })
+    .catch(err => console.log(err));
+  });
+  
 });
-router.post('/api/menus', function(req, res) {
-  console.log(req.body);
-  console.log(JSON.stringify(req.body));
-  Models.Menu.create({ UserId: 3, MenuItemDesc: JSON.stringify(req.body) })
-  .then(function(task) {
+
+router.post('/api/menus/:email', function(req, res) {
+  
+  Models.Host.findOne({ where: {email: req.params.email} }).then(function(Host) {
+    console.log(Host.id);
+    Models.Menu.create({ HostId: Host.id, MenuItemDesc: JSON.stringify(req.body) })
+    .then(function(task) {
+      res.send();
+    })
+    .catch(err => console.log(err));
+  });
+  
+});
+
+router.post('/api/hosts', function(req, res) {
+  Models.Host.findOrCreate({where: {email: req.body.email}, defaults: { firstName: req.body.firstName, lastName: req.body.lastName}})
+  .spread(function(user, created) {
     res.send();
-  })
-  .catch(err => console.log(err));
+  });  
+  
 });
 
 var doesEntryExist = function (model, column, value, callback) {
