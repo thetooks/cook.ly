@@ -35,7 +35,6 @@ class UserBooking extends React.Component {
   }
 
   render() {
-    var context = this;
     return (
       <div>
         {this.state.events.map(function(event, index) {
