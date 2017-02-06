@@ -42,10 +42,8 @@ class Host extends React.Component {
     host.firstName = this.state.profile.given_name;
     host.lastName = this.state.profile.family_name;
     host.email = this.state.profile.email;
-    // host.identity = this.state.profile.identities[0].user_id;
-   
+    
     var data = JSON.stringify(host); 
-    console.log(data);
     fetch('./api/hosts', {  
       method: 'post',
       headers: {  
@@ -53,9 +51,6 @@ class Host extends React.Component {
       },   
       body: data  
     })
-    .then(function (data) {  
-      console.log('Request succeeded with JSON response', data);  
-    })  
     .catch(function (error) {  
       console.log('Request failed', error);  
     });

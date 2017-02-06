@@ -98,10 +98,16 @@ router.post('/api/menus/:email', function(req, res) {
 });
 
 router.post('/api/hosts', function(req, res) {
-  Models.Host.findOrCreate({where: {email: req.body.email}, defaults: { firstName: req.body.firstName, lastName: req.body.lastName}})
-  .spread(function(user, created) {
-    res.send();
-  });  
+  Models.Host.findOne( {where: {email: req.body.email}})
+  .then(function(Host) {
+    if (!Host) {
+      Models.Host.create( {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email} )
+      .then(function() {
+        res.send();
+      }); 
+    }
+  });
+   
   
 });
 
