@@ -13,7 +13,6 @@ class Host extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCalendar: false,
       createEvent: false,
       showMenuBuilder: false,
       showMenuViewer: false,
@@ -25,22 +24,40 @@ class Host extends React.Component {
 
   calendarClick() {
     this.setState({
+      createEvent: false,
+      showMenuBuilder: false,
+      showMenuViewer: false,
       showCalendar: !this.state.showCalendar
     });
   }
+
   EventClick () {
-    this.setState({createEvent: !this.state.createEvent});
+    this.setState({
+      createEvent: !this.state.createEvent,
+      showMenuBuilder: false,
+      showMenuViewer: false,
+      showCalendar: false
+    });
   }
+
   menuBuilderToggle() {
     this.setState({
+      createEvent: false,
       showMenuBuilder: !this.state.showMenuBuilder,
+      showMenuViewer: false,
+      showCalendar: false
     });
   }
+
   menuViewerToggle() {
     this.setState({
-      showMenuViewer: !this.state.showMenuViewer
+      createEvent: false,
+      showMenuBuilder: false,
+      showMenuViewer: !this.state.showMenuViewer,
+      showCalendar: false
     });
   }
+
   render() {
     return (
       <div >
