@@ -1,10 +1,18 @@
+
+
 .spacerT10 {
   margin-top: 10px; 
 }
 .spacerL90 {
   margin-left: 90px; 
 }
+.spacerL150 {
+  margin-left: 150px; 
+}
 
+.spacerT50 {
+  margin-top: 50px; 
+}
 .spacerL10 {
   margin-left: 10px; 
 }
@@ -32,6 +40,10 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+
+
+
 
 
 

@@ -13,12 +13,13 @@ export class Login extends React.Component {
   }
 
   render() {
+    const wellStyles = {maxWidth: 400, margin: '0 auto 10px', fontFamily: 'Helvetica Neue' };
     const { auth } = this.props
     return (
-      <div className="login">
-        <h2 >Login</h2>
+      <div className="well" style={wellStyles} >
+        <h2 >Please Login</h2>
         <ButtonToolbar >
-          <Button bsStyle="primary" onClick={auth.login.bind(this)} >Login</Button>
+          <Button bsStyle="danger" bsSize="large" onClick={auth.login.bind(this)} block>Login</Button>
         </ButtonToolbar>
       </div>
     )

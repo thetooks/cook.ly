@@ -117,14 +117,14 @@ class Host extends React.Component {
         <Grid>
           <Row>  
             <Col md={12}>
-              <ButtonToolbar>
-                <ButtonGroup>
+              <ButtonToolbar justified>
+                <ButtonGroup >
                   <Button bsStyle="primary">Edit Profile</Button>
                   <Button onClick={this.calendarClick}>View Calendar</Button>
                   <Button onClick={this.EventClick.bind(this)}>Schedule Event</Button>
                   <Button onClick={this.menuBuilderToggle.bind(this)}>Create Menu</Button>
                   <Button onClick={this.menuViewerToggle.bind(this)}>View Menus</Button>
-                  <Button onClick={this.logout.bind(this)}>Sign out</Button>
+                  <Button onClick={this.logout.bind(this)}>Sign Out</Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </Col>
@@ -133,7 +133,7 @@ class Host extends React.Component {
             <Col sm={4}>
               <Profile profile={profile} /> 
             </Col>
-            <Col sm={8}>
+            <Col xs={2} md={2}>
               {this.state.showMenuBuilder && <MenuBuilder profile={profile} />}  
             </Col>
             <Col sm={8}>
