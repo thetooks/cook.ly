@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+
 class UserBooking extends React.Component {
   constructor(props) {
     super(props);
