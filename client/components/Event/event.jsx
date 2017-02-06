@@ -22,7 +22,7 @@ class Event extends React.Component {
     )
     .then(function (response) {  
       response.json().then(function(data) {
-        console.log('Request succeeded with JSON response', data);
+        // console.log('Request succeeded with JSON response', data);
         context.setState({
           events: data
         }); 

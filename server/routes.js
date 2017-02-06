@@ -43,35 +43,6 @@ router.get('/api/getEvents', function(req, res) {
   ).then(function(data) {
     res.send(data);
   });
-
-  // Models.Event.findAll()
-  // .then(function(events) {
-  //   var incData = JSON.stringify(events);
-  //   var data = JSON.parse(incData);
-  //   var locationIds = data.map(function(event) {
-  //     return {id: event.LocationId};
-  //   });
-  //   var hostIds = data.map(function(event) {
-  //     return {id: event.HostId};
-  //   });
-    
-  //   Models.Location.findAll({
-  //     where: {
-  //       $or: locationIds
-  //     }
-  //   }).then(function(locations) {
-  //     var incLocations = JSON.stringify(locations);
-
-  //     Models.Host.findAll({
-  //       where: {
-  //         $or: hostIds
-  //       }
-  //     }).then(function(hosts) {
-  //       var incHosts = JSON.stringify(hosts);
-  //       res.send(JSON.stringify([JSON.parse(incData), JSON.parse(incLocations), JSON.parse(incHosts)]));
-  //     });
-  //   });
-  // });
 });
 
 router.get('/api/allUpcommingEvents', function(req, res) {
