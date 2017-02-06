@@ -70,6 +70,7 @@ class UserBooking extends React.Component {
           return (
             <div key={index}>
               <ul>
+                <li>{event.eventTitle}</li>
                 <li>Host: {event.hostName}</li>
                 <li>Address: {event.address}</li>
                 <li>Theme: {event.theme}</li>
