@@ -20,41 +20,58 @@ router.get('/api/getUserEvents', function(req, res) {
       JOIN UserBookings AS ub ON ub.EventId = ev.id
     WHERE
       ub.UserId = 1`,
-    {type: Models.connection.QueryTypes.SELECT})
-  .then(function(data) {
+    {type: Models.connection.QueryTypes.SELECT}
+  ).then(function(data) {
     res.send(data);
   });
 });
 
-router.get('/getEvents', function(req, res) {
-  Models.Event.findAll()
-  .then(function(events) {
-    var incData = JSON.stringify(events);
-    var data = JSON.parse(incData);
-    var locationIds = data.map(function(event) {
-      return {id: event.LocationId};
-    });
-    var hostIds = data.map(function(event) {
-      return {id: event.HostId};
-    });
-    
-    Models.Location.findAll({
-      where: {
-        $or: locationIds
-      }
-    }).then(function(locations) {
-      var incLocations = JSON.stringify(locations);
-
-      Models.Host.findAll({
-        where: {
-          $or: hostIds
-        }
-      }).then(function(hosts) {
-        var incHosts = JSON.stringify(hosts);
-        res.send(JSON.stringify([JSON.parse(incData), JSON.parse(incLocations), JSON.parse(incHosts)]));
-      });
-    });
+router.get('/api/getEvents', function(req, res) {
+  Models.connection.query(
+    `SELECT
+      CONCAT(hs.firstName, ' ', hs.lastName) AS hostName,
+      CONCAT(lc.address, ', ', lc.city, ', ', lc.state) AS address,
+      ev.cuisine AS theme,
+      ev.price,
+      ev.startTime AS date
+    FROM
+      Events AS ev
+      JOIN Hosts AS hs ON hs.id = ev.HostId
+      JOIN Locations AS lc ON lc.id = ev.LocationId
+      JOIN UserBookings AS ub ON ub.EventId = ev.id`,
+      {type: Models.connection.QueryTypes.SELECT}
+  ).then(function(data) {
+    res.send(data);
   });
+
+  // Models.Event.findAll()
+  // .then(function(events) {
+  //   var incData = JSON.stringify(events);
+  //   var data = JSON.parse(incData);
+  //   var locationIds = data.map(function(event) {
+  //     return {id: event.LocationId};
+  //   });
+  //   var hostIds = data.map(function(event) {
+  //     return {id: event.HostId};
+  //   });
+    
+  //   Models.Location.findAll({
+  //     where: {
+  //       $or: locationIds
+  //     }
+  //   }).then(function(locations) {
+  //     var incLocations = JSON.stringify(locations);
+
+  //     Models.Host.findAll({
+  //       where: {
+  //         $or: hostIds
+  //       }
+  //     }).then(function(hosts) {
+  //       var incHosts = JSON.stringify(hosts);
+  //       res.send(JSON.stringify([JSON.parse(incData), JSON.parse(incLocations), JSON.parse(incHosts)]));
+  //     });
+  //   });
+  // });
 });
 
 router.get('/api/allUpcommingEvents', function(req, res) {
