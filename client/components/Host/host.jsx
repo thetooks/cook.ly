@@ -19,7 +19,6 @@ class Host extends React.Component {
       createEvent: false,
       showMenuBuilder: false,
       showMenuViewer: false,
-      showCalendar: false,
       profile: props.auth.getProfile()
     };
     this.calendarClick = this.calendarClick.bind(this);
