@@ -8,8 +8,8 @@ import Host from './components/Host/host.jsx';
 import Carousel from './components/Home/carousel.jsx';
 import Login from './components/Auth/login.jsx';
 import User from './components/User/user.jsx';
-
-const auth = new AuthService('x0nqjFS9JOa70TEIbFdcy6YJ9foK2Ln3', 'awattny.auth0.com');
+// make sure to enter your Auth0 credentials below  
+//const auth = new AuthService(FILL ME UP);
 // validate authentication for private routes
 const requireAuth = (nextState, replace) => {
   if (!auth.loggedIn()) {
