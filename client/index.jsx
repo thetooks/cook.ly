@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, IndexRedirect, hashHistory} from 'react-router';
+import { Router, Route, Link, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
 import AuthService from './utils/AuthService';
 
 import App from './components/Home/app.jsx';
@@ -19,14 +19,12 @@ const requireAuth = (nextState, replace) => {
 
 
 ReactDOM.render((
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={App} auth={auth}>
       <IndexRoute component={Carousel} />
-
       <Route path="host" component={Host} onEnter={requireAuth}/>
       <Route path="user" component={User} onEnter={requireAuth}/>
       <Route path="login" component={Login} />
-      
     </Route>
   </Router>
 ), document.getElementById('app'));

@@ -1,13 +1,6 @@
 var router = require('express').Router();
 var Models = require('../cooklydatabase.js');
-
-router.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/client/index.html'));
-});
-
-router.get('/login', function(req, res) {
-  res.redirect('/');
-});
+var path = require('path');
 
 router.get('/api/getUserEvents', function(req, res) {
   Models.connection.query(
@@ -189,6 +182,10 @@ router.post('/api/postevent', function (req, res) {
       res.send({'eventStatus': 'created'});
     });
   });
+});
+
+router.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 module.exports = router;

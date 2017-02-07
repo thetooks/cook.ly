@@ -110,7 +110,7 @@ class Host extends React.Component {
   }
   render() {
     const { profile } = this.state;
-    this.saveUserData();
+    // this.saveUserData();
     return (
       <div >
         <h1 className="spacerL90">HOST DASHBOARD</h1>
