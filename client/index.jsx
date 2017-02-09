@@ -11,6 +11,7 @@ import User from './components/User/user.jsx';
 
 // Legacy
 import Search from './components/Search/Search.jsx';
+// import SearchBar from './components/Search/SearchBar.jsx';
 import EventList from './components/EventList/EventList.jsx';
 
 // make sure to enter your Auth0 credentials below  
@@ -31,7 +32,7 @@ ReactDOM.render((
       <Route path="user" component={User} onEnter={requireAuth}/>
       <Route path="login" component={Login} />
       <Route path="search" component={Search} />
-      <Route path="results" component={EventList} />
+      <Route path="events" component={EventList} />
 
     </Route>
   </Router>
