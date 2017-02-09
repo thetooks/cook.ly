@@ -1,0 +1,14 @@
+.flexWrapper {  
+  display: flex;
+  flex-flow: row wrap;
+  
+}
+
+.flexItem {
+  flex: 1 1 auto;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
