@@ -1,0 +1,37 @@
+* {
+
+}
+
+
+body {
+  margin: 0;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  color: #484848;
+  -webkit-font-smoothing: antialiased;
+}
+
+.flexWrapper {  
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+}
+
+.flexItem {
+  flex: 1 1 auto;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.fullContainer {
+  width: 100%;
+}
+
+.fa {
+  font-size: 10px;
+  position: relative;
+  top: -2px;
+}
