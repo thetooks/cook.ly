@@ -1,5 +1,10 @@
 import React from 'react';
 import EventListItem from '../EventListItem/EventListItem.jsx';
+import { events } from '../../../db/dummyData.js';
+import Locations from './Locations/Locations.jsx';
+import Filter from './Filter/Filter.jsx';
+import Info from './Info/Info.jsx';
+import styles from './EventList.css';
 
 class EventList extends React.Component {
   constructor(props) {
@@ -9,29 +14,34 @@ class EventList extends React.Component {
 
     this.state = {
       events: events
+      
     }
   }
 
   render() {
     return (
       <div>
-        <div className="container">
-           <h2>{this.title}</h2>
-            <div className="flexWrapper">
-            <div className="flexItem">
-              <EventListItem event={this.state.events[0]}/>
-              <EventListItem event={this.state.events[1]}/>
-              <EventListItem event={this.state.events[2]}/>
-              <EventListItem event={this.state.events[3]}/>
-              <EventListItem event={this.state.events[4]}/>
-              <EventListItem event={this.state.events[5]}/>
-              <EventListItem event={this.state.events[6]}/>
-              <EventListItem event={this.state.events[7]}/>
-              <EventListItem event={this.state.events[8]}/>
+        <div className="fullContainer">
+          
 
+          <Filter />
+
+          <div className="flexWrapper">
+            <div className={styles.listContainer}>
+              <Info />
+
+              <div className="flexWrapper">
+                {
+                  this.state.events.map((event) => {
+                    return (
+                      <EventListItem key={event.id} event={event}/>
+                    );
+                  })
+                }
+              </div>  
             </div>
-            <div className="flexItem">
-              <span>Map</span>
+            <div className={styles.locationContainer}>
+              <Locations /> 
             </div>
           </div>   
         </div>
@@ -41,88 +51,3 @@ class EventList extends React.Component {
 }
 
 export default EventList;
-
-var events = [
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  },
-  {
-    'img': 'src',
-    'price': 20,
-    'type': 'French',
-    'reviews': {
-      rating: 5,
-      count: 283
-    }
-  }
-]
-;
