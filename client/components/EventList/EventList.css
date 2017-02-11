@@ -1,8 +1,28 @@
 .listContainer {
-  flex: 1.5 1;
-  margin: 0 10px;
+  position: absolute;
+  top:114px;  
+  left: 0;
+  bottom: 0;
+
+  width: 60%;
+  overflow-y: scroll;
 }
 
 .locationContainer {
-  flex: 1 1;
+  position: absolute;
+  top:114px;
+  left: auto;
+  bottom: 0;
+  right: 0;
+  
+  width: 40%;
+  background-image: url("https://www.moooi.com/sites/default/files/styles/large/public/product-images/random_detail.jpg?itok=ErJveZTY");
 }
+
+.listItemContainer {
+  position: absolute;
+  top: 55px;
+  
+  padding: 10px;
+}
+

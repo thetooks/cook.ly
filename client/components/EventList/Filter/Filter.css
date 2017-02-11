@@ -1,6 +1,5 @@
 .filterWrapper {
   width: 100%;
-  border-top: 1px solid #dce0e0;
   border-bottom: 1px solid #dce0e0;
 
   display: flex;
@@ -30,6 +29,8 @@
 
 .filterOptionDetails {
   margin-right: 10px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .optionIcon {

@@ -18,19 +18,32 @@ class EventListItem extends React.Component {
           
           <img src={this.event.cover} className={styles.cover}/>
           
-            <div className={styles.priceRatingContainer}>
+          <div className={styles.priceRatingContainer}>
 
-            </div>
+          </div>
+          <div className={styles.eventDetails}>
+
+
+            <span className={styles.detailPrice}>
+              <strong>${this.event.price}</strong>
+            </span>
+            
+            <span className={styles.detailReviewRating}>
+              <strong>{this.event.reviews.rating}</strong> Stars
+            </span>
+
+            <span className={styles.detailReviewCount}>
+              <strong>{this.event.reviews.count}</strong> Ratings
+            </span>
+
             <div className={styles.eventTitle}>
               <strong>{this.event.title}</strong>
             </div>
-            <div className={styles.eventDetails}>
 
-              <span id={styles.detailPrice}>${this.event.price}</span>
-              <span id={styles.detailType}>{this.event.type}</span>
-              <span id={styles.detailReviewRating}>{this.event.reviews.rating}</span>
-              <span id={styles.detailReviewCount}>{this.event.reviews.count}</span>
-            </div>
+            <span className={styles.detailType}>
+              {this.event.type} / House
+            </span>
+          </div>
 
           
         </div>

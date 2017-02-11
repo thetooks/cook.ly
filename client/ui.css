@@ -30,8 +30,12 @@ body {
   width: 100%;
 }
 
-.fa {
+.fa-chevron {
   font-size: 10px;
   position: relative;
   top: -2px;
+}
+
+.fa-search {
+  font-size: 20px;
 }
