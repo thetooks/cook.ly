@@ -29,15 +29,18 @@ class EventList extends React.Component {
           <div className="flexWrapper">
             <div className={styles.listContainer}>
               <Info />
+              <div className={styles.listItemContainer}>
+                
 
-              <div className="flexWrapper">
-                {
-                  this.state.events.map((event) => {
-                    return (
-                      <EventListItem key={event.id} event={event}/>
-                    );
-                  })
-                }
+                <div className="flexWrapper">
+                  {
+                    this.state.events.map((event) => {
+                      return (
+                        <EventListItem key={event.id} event={event}/>
+                      );
+                    })
+                  }
+                </div>  
               </div>  
             </div>
             <div className={styles.locationContainer}>
