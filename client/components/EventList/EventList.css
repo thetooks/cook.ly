@@ -1,0 +1,8 @@
+.listContainer {
+  flex: 1.5 1;
+  margin: 0 10px;
+}
+
+.locationContainer {
+  flex: 1 1;
+}

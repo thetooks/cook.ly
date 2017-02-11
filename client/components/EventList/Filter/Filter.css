@@ -1,0 +1,39 @@
+.filterWrapper {
+  width: 100%;
+  border-top: 1px solid #dce0e0;
+  border-bottom: 1px solid #dce0e0;
+
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  height: 100%;
+}
+
+.filterOptionWrapper {
+  /*width: auto;*/
+  flex-basis: auto;
+  /*height: 100%*/;
+  border-right: 1px solid #dce0e0;
+  
+}
+
+.filterOptionWrapper:hover {
+  background-color: #F2F2F2;
+  cursor: pointer;
+}
+
+.filterOption {
+  text-transform: capitalize;
+  padding:15px 20px;
+  
+}
+
+.filterOptionDetails {
+  margin-right: 10px;
+}
+
+.optionIcon {
+  color: #dce0e0;
+  font-size: 12px;
+  padding-left: 15px;
+}
