@@ -7,7 +7,7 @@ import styles from "./Map.css";
   mixins: [ ReactScriptLoaderMixin ],
 
   getScriptURL: function() {
-    return `https://maps.googleapis.com/maps/api/js?key=${GoogleMapsApiKey}`;
+    return '';//`https://maps.googleapis.com/maps/api/js?key=${GoogleMapsApiKey}`;
   },
 
   getInitialState: function() {
