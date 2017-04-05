@@ -1,0 +1,1 @@
+module.exports.GoogleMapsApiKey = 'AIzaSyB8_T5n9mqRHKgn1Q-Ed3jIvP8hcajKMKs';

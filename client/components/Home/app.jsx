@@ -1,5 +1,5 @@
 import React, { PropTypes as T } from 'react';
-import Navbar from './nav.jsx';
+import NavBar from '../NavBar/NavBar.jsx';
 import Carousel from './carousel.jsx';
 import $ from 'jquery';
 
@@ -15,10 +15,10 @@ class App extends React.Component {
       });
     }
 
+        
     return (
       <div >
-        <Navbar />
-        
+        <NavBar />
         {children}
       </div>
     );

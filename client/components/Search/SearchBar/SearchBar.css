@@ -1,0 +1,40 @@
+.searchBar {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
+
+.searchBarWrapper {
+  
+  border: 2px solid black;
+}
+
+.searchBarOptionWrapper {
+  height: 100%;
+  border-right: 1px solid black;
+}
+
+/* Not using pseudo selector last because nested elements */
+.searchBarOptionWrapperLast {
+  border-right: none;
+}
+
+.searchBarOptionWrapper {
+  height: 100%;
+  
+}
+
+.searchBarWhereOption {
+  padding: 20px;
+  
+}
+
+.searchBarWhenOption {
+  padding: 20px;
+  
+}
+
+.searchBarHowManyOption {
+  padding: 20px;
+}
+

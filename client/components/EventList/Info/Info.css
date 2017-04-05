@@ -1,0 +1,21 @@
+.infoWrapper {
+  position: fixed;
+  width: 60%;
+
+  z-index: 5;
+
+  background-color: white;
+  border-bottom: 1px solid #dce0e0;
+}
+
+.infoDetailsWrapper {
+  padding: 20px 30px;
+}
+
+.info {
+  float: left;
+}
+
+.number {
+  float: right;
+}

@@ -1,0 +1,36 @@
+.eventItemWrapper {
+  flex: 1 1 50%;
+}
+
+.eventListItem {
+  /*text-align: center;
+  position: relative;
+  font-size: 14px;*/
+}
+
+.eventItemDetailsWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  
+  padding: 10px;
+}
+
+.cover {
+  width: 100%;
+  justify-content: center;
+}
+
+.eventTitle {
+  font-size: 1.2em;
+}
+
+.eventDetails {
+  padding: 10px 0;
+  width: 100%;
+}
+
+.detailReviewRating, .detailReviewCount {
+  float: right;
+  padding-left: 10px;
+}
